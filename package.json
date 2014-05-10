@@ -1,0 +1,19 @@
+{
+  "name": "ccsp",
+  "version": "0.0.0",
+  "description": "CCSP final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/apa915436/ccsp"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apa915436/ccsp/issues"
+  },
+  "homepage": "https://github.com/apa915436/ccsp"
+}
