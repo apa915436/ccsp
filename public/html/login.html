@@ -11,6 +11,7 @@
   <body>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/login.js"></script>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -25,54 +26,40 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Login</a></li>
-            <li><a data-toggle="modal" href="index.html" data-target="#modal">點擊我</a></li>
             <li><a href="#">Setting</a></li>
             <li><a href="#">Help</a></li>
           </ul>
         </div>
       </div>
     </nav>
-    <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#">自由交易</a>
-      </li>
-      <li><a href="#">公益特區</a></li>
-    </ul>
     <div class="container-fluid">
       <!--Content and sidebar-->
-      <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-          <!--Sidebar content-->
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">衣物</a></li>
-            <li><a href="#">家電</a></li>
-            <li><a href="#">文具</a></li>
-            <li><a href="#">食品</a></li>
-            <li><a href="#">傢俱</a></li>
-            <li><a href="#">3C產品</a></li>
-            <li><a href="#">廚房用具</a></li>
-            <li><a href="#">清潔用具</a></li>
-          </ul>
+      <div class="col-sm-12 col-md-12 main content center">
+        <div class="btn-group">
+          <button class="btn active">登入</button>
+          <button class="btn">註冊</button>
         </div>
-        <div class="col-sm-9 col-md-10 main content">
-          <div class="col-sm-12">
-          </div>
-          <div class="col-sm-12">
-          </div>
-          <div class="col-sm-4">
-          </div>
-          <div class="col-sm-4">
-            <div class="btn-group">
-              <button class="btn">登入</button>
-              <button class="btn">註冊</button>
+        <form class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label" for="inputEmail">Email</label>
+            <div class="controls">
+            <input type="text" id="inputEmail" placeholder="Email">
             </div>
-
           </div>
-          <div class="col-sm-4">
+          <div class="control-group">
+            <label class="control-label" for="inputPassword">密碼</label>
+            <div class="controls">
+              <input type="password" id="inputPassword" placeholder="密碼">
+            </div>
           </div>
-        </div><!--/span-->          
-        </div>
-      </div>
+          <div class="control-group">
+            <div class="controls">
+              <br>
+              <button type="submit" class="btn">登入</button>
+            </div>
+          </div>
+        </form>
+      </div><!--/span--> 
     </div>
   </body>
 </html>
