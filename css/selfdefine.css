@@ -6,6 +6,9 @@
 .content{
 	float: right;
 }
+.center{
+  text-align: center;
+}
 .item_holder{
   margin-top: 10px;
   margin-bottom: 10px;

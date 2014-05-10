@@ -1996,7 +1996,8 @@ select[multiple].input-lg {
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
-  line-height: 1.42857143;
+  line-heig
+  ht: 1.42857143;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
@@ -3492,7 +3493,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
-  text-align: center;
+  text-align:center;
   border-bottom: 1px solid #ddd;
 }
 .nav-tabs > li {
