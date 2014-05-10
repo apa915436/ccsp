@@ -1,6 +1,32 @@
-
+.item_img_size{
+  margin-left: 10%;
+  width:300px; 
+  height:300px;
+}
 .content{
 	float: right;
+}
+.item_holder{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: blue;
+  font-size: 20px;
+}
+.item_description{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+.credit{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color:red;
+}
+.buy_btn{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 /*
  * Off Canvas
