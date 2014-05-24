@@ -6,8 +6,15 @@ exports.index = function (req, res) {
 }
 
 exports.home = function (req, res) {
-  res.render('home', {title: 'Love Spreading'});
+  	//從DB拿出supply的東西，回傳給home.js
+  	res.render('home', {title: 'Love Spreading'});
 }
+
+exports.charity = function (req, res) {
+	//從DB拿出need的東西，回傳給home.js
+  	//res.render('home', {title: 'Love Spreading'});
+}
+
 
 // exports.supply = function ( req, res ){
 

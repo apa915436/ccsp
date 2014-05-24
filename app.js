@@ -43,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.get('/', routes.index)
 app.get('/home',routes.home)
+app.get('/charity',routes.charity)
 // app.get('/supply',routes.supply)
 // app.get('/charity',controllers.charity)
 // app.get('/need',controllers.need)
