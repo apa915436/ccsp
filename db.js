@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+ 
+// mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/items');
 
 // Error handler
 mongoose.connection.on('error', function(err){
@@ -12,7 +14,7 @@ mongoose.connection.once('open', function(){
   console.log('database connection established');
 });
 
-require('../models/user');
-require('../models/need');
-require('../models/supply');
-require('../models/trans');
+require('./models/user');
+require('./models/need');
+require('./models/supply');
+require('./models/trans');

@@ -1,3 +1,5 @@
+require('./db'); // TODO [DB] : Connect to database
+
 
 var express = require('express');
 var http = require('http');
@@ -6,8 +8,9 @@ var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var routes  = require( './routes' );
+// var supply = require('./supply');
 
-require('./config/db'); // TODO [DB] : Connect to database
+
 // require('./config/passport'); // TODO [FB] : Passport configuration
 
 var app = express();
@@ -43,8 +46,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.get('/', routes.index)
 app.get('/home',routes.home)
-app.get('/charity',routes.charity)
-// app.get('/supply',routes.supply)
+// app.get('/charity',routes.charity)
+app.get('/supply',routes.supply)
 // app.get('/charity',controllers.charity)
 // app.get('/need',controllers.need)
 // app.get('/upload',controllers.uppload)

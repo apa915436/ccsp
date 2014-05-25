@@ -13,9 +13,9 @@ var Schema = mongoose.Schema;
 //     updated_at : Date
 // }));
 
-var Supply = new Schema({
+var SupplySchema = new Schema({
     supply_id  : String,
     updated_at : Date
 });
 
-mongoose.model('Supply', Supply);
+var Supply = mongoose.model('Supply', SupplySchema); 

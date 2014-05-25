@@ -1,8 +1,8 @@
 var mongoose = require( 'mongoose' );
-// var Supply   = mongoose.model( "Supply");
+var Supply   = mongoose.model('Supply');
 
 exports.index = function (req, res) {
-  res.render('index', {title: 'Love Spreading'});
+  	res.render('index', {title: 'Love Spreading'});
 }
 
 exports.home = function (req, res) {
@@ -10,10 +10,27 @@ exports.home = function (req, res) {
   	res.render('home', {title: 'Love Spreading'});
 }
 
-exports.charity = function (req, res) {
-	//從DB拿出need的東西，回傳給home.js
-  	//res.render('home', {title: 'Love Spreading'});
+exports.supply = function (req, res) {
+ 	Supply.find(function (err, users, count){
+    	if(err){
+      		console.error(err);
+      		res.json({error: err.supply_id}, 500);
+    	};
+    	res.render( 'home', {
+          todos : todos
+      	});
+
+    	res.json({supply_id: supply_id});
+  	});
+//  	res.render('home', {title: 'Love Spreading'});
 }
+
+
+
+// exports.charity = function (req, res) {
+// 	//從DB拿出need的東西，回傳給home.js
+//   	//res.render('home', {title: 'Love Spreading'});
+// }
 
 
 // exports.supply = function ( req, res ){

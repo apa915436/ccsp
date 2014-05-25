@@ -5,10 +5,19 @@ var addButton = $('#add'),
 
 var item = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><p></p><p><a href="#" class="btn btn-info">More</a></p></div></div></div>';
 var flag = $('.modify');
-
+    
 
 addButton.click(function(){
-  $(item).appendTo(flag);
+    $.get(
+        './supply',
+    {},
+    function(){
+    $(item).appendTo(flag).find('h3').text('new item');
+    $('this').parent('li').addClass('active');
+    },
+    'json'
+    );
+    $(item).appendTo(flag);
 });
 
 // addButton.on('click', function(){
@@ -19,7 +28,7 @@ addButton.click(function(){
 chartity_btn.click(function(){
     
     $.get(
-    './charity',
+        './charity',
     {},
     function(){
     $(item).appendTo(flag).find('h3').text('new item');
