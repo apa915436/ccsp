@@ -11,22 +11,21 @@ exports.home = function (req, res) {
   	res.render('home', {title: 'Love Spreading'});
 }
 
-exports.latest = function (req, res) {
+exports.supply = function (req, res) {
  	// console.log('in latest model');
- 	
+ 	// console.log(req.params.id);
  	Supply.
  		find().
- 		exec( function (err, latests){
+ 		exec( function (err, items){
 	    	if(err){
 	      		console.error(err);
 	    	};
-	    	res.render('home',{latests: latests});
+	    	res.render('home',{items: items}); 
       	});	 	
 }
 
 exports.charity = function (req, res) {
 	// console.log('in charity model');
-
  	Supply.
  		find().
  		exec( function (err, charity){
@@ -36,6 +35,7 @@ exports.charity = function (req, res) {
 	    	res.render('home',{charity: charity});
       	});
 }
+
 exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
 }
