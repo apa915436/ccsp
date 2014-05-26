@@ -1,36 +1,69 @@
 var mongoose = require( 'mongoose' );
+var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
+
 
 exports.index = function (req, res) {
   	res.render('index', {title: 'Love Spreading'});
 }
 
 exports.home = function (req, res) {
+	// console.log('inHome');
   	//從DB拿出supply的東西，回傳給home.js
   	res.render('home', {title: 'Love Spreading'});
 }
 
-exports.supply = function (req, res) {
- 	Supply.find(function (err, users, count){
-    	if(err){
-      		console.error(err);
-      		res.json({error: err.supply_id}, 500);
-    	};
-    	res.render( 'home', {
-          todos : todos
-      	});
+exports.latest = function (req, res) {
+	Supply.find();
+	console.log(latest);
+ 	console.log('in latest model');
+ 	res(latest);
+ 	// Supply.
+ 	// 	find().
+ 	// 	sort('-updated_at').
+ 	// 	exec( function (err, latests){
+	 //    	if(err){
+	 //      		console.error(err);
+	 //    	};
+	 //    	console.log('inDB');
+	 //    	res.render('home',{latests: latests});
+  //     	});	 	
+}
 
-    	res.json({supply_id: supply_id});
-  	});
-//  	res.render('home', {title: 'Love Spreading'});
+exports.charity = function (req, res) {
+	console.log('in routes');
+	res.render('index', {title: 'love'});
+	//從DB拿出need的東西，回傳給home.js
+  	// res.render('home', {title: 'Love Spreading'});
 }
 
 
+ // vote.save(function(err, newVote){
+    
+ //    var p = [];
+ //    var voting = [];
+ //    var sum = 0;
+ //    Vote.aggregate(
+ //      { $group: { _id: "$vote", num: {$sum : 1}}}
+ //      , function (err, result) {
+ //        if (err) console.log(err);
+ //        console.log(result); // [ { maxBalance: 98000 } ]
+ //        promise.all(result).then(function(values){
+ //          for(var i = 0, len= values.length; i < len; i++){
+ //            voting[values[i]._id] = values[i].num;
+ //            sum += values[i].num;
+ //          }
+ //          for(var j = 0; j < 7; j++){
+ //            p[j] = voting[j]/sum * 100;
+ //            console.log("p: " + p[j]);
+ //          }
+ //          res.render('result', {
+ //            votes: [p[0], p[1], p[2], p[3], p[4], p[5], p[6]]// Percentages
+ //          });
+ //        });
+ //    });
+ //  });
 
-// exports.charity = function (req, res) {
-// 	//從DB拿出need的東西，回傳給home.js
-//   	//res.render('home', {title: 'Love Spreading'});
-// }
 
 
 // exports.supply = function ( req, res ){
