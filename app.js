@@ -48,7 +48,7 @@ app.get('/', routes.index)
 app.get('/home',routes.home)
 app.get('/latest',routes.latest)
 app.get('/charity',routes.charity)
-
+app.get('/upload', routes.upload);
 
 
 http.createServer(app).listen(app.get('port'), function(){

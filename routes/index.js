@@ -36,7 +36,9 @@ exports.charity = function (req, res) {
 	//從DB拿出need的東西，回傳給home.js
   	// res.render('home', {title: 'Love Spreading'});
 }
-
+exports.upload = function (req, res) {
+	res.render('upload',{title: 'Love Spreading'});
+}
 
  // vote.save(function(err, newVote){
     

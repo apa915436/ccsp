@@ -18,12 +18,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home.html">Love Spreading</a>
+          <a class="navbar-brand" href="home">Love Spreading</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="home">物品瀏覽</a></li>
+            <li><a href="upload">物品捐贈</a></li>
             <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
-            <!-- <li><a href="#">Setting</a></li> -->
             <li><a href="#">Help</a></li>
           </ul>
         </div>
@@ -110,7 +111,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Prompt login dialog Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -120,15 +121,15 @@
           <div class="modal-body">
             <form class="form col-md-12 center-block">
               <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Email">
+                <input type="text" class="form-control input-lg" placeholder="Email" id="account">
               </div>
-                <div class="form-group">
-                  <input type="password" class="form-control input-lg" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-                  <span class="pull-left"><a href="#">Register</a></span>
-                </div>
+              <div class="form-group">
+                <input type="password" class="form-control input-lg" placeholder="Password" id="password">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-lg btn-block" id="signIn">Sign In</button>
+                <span class="pull-left"><a href="#">Don't have an account? Register!</a></span>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -139,10 +140,9 @@
         </div>
       </div>
     </div>
-    <!-- modal end -->
+    <!-- Prompt login dialog modal end -->
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/home.js"></script>
-  </body>
 </html>
 
