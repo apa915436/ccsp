@@ -8,33 +8,33 @@ exports.index = function (req, res) {
 }
 
 exports.home = function (req, res) {
-	// console.log('inHome');
-  	//從DB拿出supply的東西，回傳給home.js
   	res.render('home', {title: 'Love Spreading'});
 }
 
 exports.latest = function (req, res) {
-	Supply.find();
-	console.log(latest);
- 	console.log('in latest model');
- 	res(latest);
- 	// Supply.
- 	// 	find().
- 	// 	sort('-updated_at').
- 	// 	exec( function (err, latests){
-	 //    	if(err){
-	 //      		console.error(err);
-	 //    	};
-	 //    	console.log('inDB');
-	 //    	res.render('home',{latests: latests});
-  //     	});	 	
+ 	// console.log('in latest model');
+ 	
+ 	Supply.
+ 		find().
+ 		exec( function (err, latests){
+	    	if(err){
+	      		console.error(err);
+	    	};
+	    	res.render('home',{latests: latests});
+      	});	 	
 }
 
 exports.charity = function (req, res) {
-	console.log('in routes');
-	res.render('index', {title: 'love'});
-	//從DB拿出need的東西，回傳給home.js
-  	// res.render('home', {title: 'Love Spreading'});
+	// console.log('in charity model');
+
+ 	Supply.
+ 		find().
+ 		exec( function (err, charity){
+	    	if(err){
+	      		console.error(err);
+	    	};
+	    	res.render('home',{charity: charity});
+      	});
 }
 exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
