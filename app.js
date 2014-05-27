@@ -45,8 +45,8 @@ app.get('/', routes.index);
 app.get('/home',routes.home);
 app.get('/supply/:id',routes.supply);
 app.get('/need/:id',routes.need);
-app.get('/upload', routes.upload);
 app.post('/create',routes.create);
+app.get('/upload', routes.upload);
 
 
 
