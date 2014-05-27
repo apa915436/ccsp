@@ -36,6 +36,7 @@ exports.charity = function (req, res) {
       	});
 }
 
+
 exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
 }
