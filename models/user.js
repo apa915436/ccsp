@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var User = new Schema({
+var Userschema = new Schema({
     user_id    : String,
     name       : String,
     tel        : String,
@@ -11,4 +11,5 @@ var User = new Schema({
     updated_at : Date
 });
 
-mongoose.model( 'User', User );
+var User = mongoose.model( 'User', Userschema );
+
