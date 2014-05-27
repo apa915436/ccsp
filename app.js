@@ -6,6 +6,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var routes  = require( './routes' );
+var user  = require( './routes/user' );
 // var flash = require('connect-flash');
 
 // require('./config/passport'); // TODO [FB] : Passport configuration
@@ -20,10 +21,12 @@ app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
+app.use(express.bodyParser());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-// app.use(express.cookieParser(process.env.COOKIE_SECRET));
-// app.use(express.session());
+
+app.use(express.cookieParser("heyheyhey u can't guess my cookie key!"));
+app.use(express.cookieSession());
 
 // https://github.com/jaredhanson/passport#middleware
 // app.use(passport.initialize());
@@ -48,6 +51,10 @@ app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
 
+app.get('/user', user.index);
+app.post('/user', user.create);
+app.post('/user/login', user.login);
+app.get('/user/logout', user.logout);
 
 
 http.createServer(app).listen(app.get('port'), function(){
