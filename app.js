@@ -1,15 +1,12 @@
-require('./db'); // TODO [DB] : Connect to database
-
+require('./db'); // connct to our DB
 
 var express = require('express');
 var http = require('http');
 var path = require('path');
-// var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var routes  = require( './routes' );
-// var supply = require('./supply');
-
+// var flash = require('connect-flash');
 
 // require('./config/passport'); // TODO [FB] : Passport configuration
 
@@ -20,10 +17,10 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '/public/html'));
 app.set('view engine', 'ejs');
-// app.use(express.favicon());
-// app.use(express.logger('dev'));
+app.use(express.favicon());
+app.use(express.logger('dev'));
 app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.urlencoded());
 app.use(express.methodOverride());
 // app.use(express.cookieParser(process.env.COOKIE_SECRET));
 // app.use(express.session());
@@ -38,16 +35,17 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// // development only
-// if ('development' == app.get('env')) {
-//   app.use(express.errorHandler());
-// }
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
 
 // Routes
 app.get('/', routes.index);
 app.get('/home',routes.home);
 app.get('/supply/:id',routes.supply);
-app.get('/charity',routes.charity);
+app.get('/need/:id',routes.need);
+app.post('/create',routes.create);
 app.get('/upload', routes.upload);
 
 

@@ -14,7 +14,7 @@ mongoose.connection.once('open', function(){
   console.log('database connection established');
 });
 
-require('./models/user');
-require('./models/need');
 require('./models/supply');
 require('./models/trans');
+require('./models/need');
+require('./models/user');

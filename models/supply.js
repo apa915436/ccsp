@@ -14,7 +14,7 @@ var Schema = mongoose.Schema;
 // }));
 
 var SupplySchema = new Schema({
-    supply_id  : String,
+    name  : Number,
     updated_at : Date
 });
 
