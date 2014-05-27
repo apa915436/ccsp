@@ -47,6 +47,7 @@ app.get('/supply/:id',routes.supply);
 app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
+app.get('more/:id',routes.more);
 
 
 

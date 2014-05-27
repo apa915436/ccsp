@@ -69,6 +69,23 @@ function need(cat){
     );
 };
 
+function more(id){
+    console.log('in more ', id);
+    $.getJSON(
+        '/more/'+id,
+    {},
+    function(item){
+        console.log(item);
+        console.log('item :',items._id);
+        temp.addClass('active');
+        $(flag).empty();
+        for(var i=0; i<items.length; i++){
+            $(donate).appendTo(flag).find('h3').text('latest item'+items[i]._id);
+        }
+    }
+    );
+};
+
 charity_btn.click(function(){
     bool_charity = 1;
     console.log('charity button',bool_charity);
