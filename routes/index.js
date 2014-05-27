@@ -51,6 +51,18 @@ exports.create = function ( req, res){
 
 };
 
+exports.more = function (req, res) {
+ 	console.log('in more model ',req.params.id);
+ 	Need.
+ 		find({_id: req.params.id}).
+ 		exec( function (err, item){
+	    	if(err){
+	      		console.error(err);
+	    	};
+	    	res.json(item);
+	    });       		 	
+}
+
 exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
 }
