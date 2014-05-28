@@ -1,3 +1,4 @@
+
 var mongoose = require( 'mongoose' );
 var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
@@ -6,38 +7,49 @@ var need_index = 0;
 var supply_index = 0;
 
 
-exports.index = function (req, res) {
-  	res.render('index', {title: 'Love Spreading'});
+
+exports.index = function(req, res) {
+	res.render('index', {
+		title: 'Love Spreading'
+	});
 }
 
-exports.home = function (req, res) {
-  	res.render('home', {title: 'Love Spreading'});
+exports.home = function(req, res) {
+	console.log(req.session.user);
+	res.render('home', {
+		title: 'Love Spreading',
+		user: req.session.user
+	});
 }
 
-exports.supply = function (req, res) {
- 	// console.log('in latest model');
- 	console.log('in supply catogory ',req.params.id);
- 	Supply.
- 		find({catogory: req.params.id}).
- 		exec( function (err, items){
-	    	if(err){
-	      		console.error(err);
-	    	};
-	    	res.json(items);
-	    });       		 	
+exports.supply = function(req, res) {
+	// console.log('in latest model');
+	console.log('in supply catogory ', req.params.id);
+	Supply.
+	find({
+		catogory: req.params.id
+	}).
+	exec(function(err, items) {
+		if (err) {
+			console.error(err);
+		};
+		res.json(items);
+	});
 }
 
-exports.need = function (req, res) {
- 	// console.log('in need model');
- 	console.log('in need catogory ',req.params.id);
- 	Need.
- 		find({catogory: req.params.id}).
- 		exec( function (err, items){
-	    	if(err){
-	      		console.error(err);
-	    	};
-	    	res.json(items);
-	    });       		 	
+exports.need = function(req, res) {
+	// console.log('in need model');
+	console.log('in need catogory ', req.params.id);
+	Need.
+	find({
+		catogory: req.params.id
+	}).
+	exec(function(err, items) {
+		if (err) {
+			console.error(err);
+		};
+		res.json(items);
+	});
 }
 
 exports.create = function ( req, res){
@@ -64,13 +76,53 @@ exports.create = function ( req, res){
 
 };
 
-exports.upload = function (req, res) {
-	res.render('upload',{title: 'Love Spreading'});
+exports.item = function(req, res) {
+	console.log('charity or not', req.params.charity);
+	console.log('in more model ', req.params.id);
+	if (req.params.charity === 0) {
+		Supply.
+		find({
+			_id: req.params.id
+		}).
+		exec(function(err, item) {
+			if (err) {
+				console.error(err);
+			};
+			// res.json(item);
+			res.render('item');
+		});
+	} else {
+		Need.
+		find({
+			_id: req.params.id
+		}).
+		exec(function(err, item) {
+			if (err) {
+				console.error(err);
+			};
+			// res.json(items);
+			res.render('item');
+		});
+	}
 }
 
-exports.login = function(req, res){
+exports.upload = function(req, res) {
+	res.render('upload', {
+		title: 'Love Spreading'
+	});
+
+}
+
+exports.login = function(req, res) {
 	console.log("login function");
 	var account = req.account;
 	var password = req.password;
-	console.log(account+ " " + password);
+
+	console.log(account + " " + password);
+}
+
+exports.status = function(req, res) {
+	res.render("status", {
+		session: JSON.stringify(req.session)
+	});
 }

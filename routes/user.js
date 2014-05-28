@@ -20,15 +20,11 @@ exports.new = function(req, res) {
 };
 
 exports.create = function(req, res) {
-	// console.log("cc");
-	// console.log(req.body);
-	// console.log(req.params);
-	// console.log(req.query);
-	// console.log(query)
 	var user = req.body;
 	User.create(user);
-// console.log(req);
-	res.json(user);
+	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+	var flash = '<h1>' + req.body.name + ' 成功註冊!</h1></html>';
+	res.end(redirect+flash);
 };
 
 exports.show = function(req, res) {
@@ -67,5 +63,7 @@ exports.login = function(req, res) {
 
 exports.logout = function(req, res) {
 	delete req.session["user"];
-	res.json({"msg":"you died!"});
+	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+	var flash = '<h1>成功登出!</h1></html>';
+	res.end(redirect+flash);
 };
