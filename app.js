@@ -50,9 +50,7 @@ app.get('/supply/:id',routes.supply);
 app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
-<<<<<<< HEAD
 app.post('/login', routes.login);
-=======
 app.get('more/:id',routes.more);
 
 app.get('/user', user.index);
@@ -60,8 +58,6 @@ app.post('/user', user.create);
 app.post('/user/login', user.login);
 app.get('/user/logout', user.logout);
 
-
->>>>>>> 5fb643d42c01a861bf02874eff56cf88eede8cb5
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

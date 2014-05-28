@@ -67,7 +67,6 @@ exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
 }
 
-<<<<<<< HEAD
 exports.login = function(req, res){
 	console.log("login function");
 	var account = req.account;
@@ -215,5 +214,3 @@ exports.login = function(req, res){
 
 //   next();
 // };
-=======
->>>>>>> 5fb643d42c01a861bf02874eff56cf88eede8cb5
