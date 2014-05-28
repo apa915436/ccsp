@@ -1,8 +1,8 @@
 (function(){
 
 var item = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info more">More</a></div></div></div>',
-    donate = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info">More</a></div></div></div>',
-    detail = '<div class="col-sm-5"><img class="item_img_size" src="../img/rice_cooker.jpg"></div><div class="item_holder">Andy Chang</div><div class="credit">Credit: 100</div><div class="item_description">家裡不要的大同電鍋ＸＤ<br>可以燒菜煮飯<br>我樣樣都行歐！<br>快把我帶回家：）<br>其實我是商品描述！</div><button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button></div></div></div>';
+    donate = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info more">More</a></div></div></div>',
+    detail = '<div class="col-sm-5"><img class="item_img_size" src="../img/closet.jpg"></div><h3></h3><h4></h4><p class="item_description"></p><button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button></div></div></div>';
 
 var addButton       = $('#add'),
     charity_btn     = $('#charity'),   
@@ -49,57 +49,65 @@ function load(cat, bind){
         $(flag).empty();
         for(var i=0; i<items.length; i++){
             var a = $(item).appendTo(flag);
-            a.find('h3').text(items[i].item_name+' catogory:'+items[i].catogory);
-            // a.find('h4').addClass('hide').text(items[i]._id);
             // var href = '/item/'+bool_charity+'/'+items[i]._id;
-            // a.find('a').attr('href',href);
-            a.find('a').attr('data-id', items[i]._id);
+            console.log(items[i]._id);
+            a.find('h3').text(items[i].item_name);
+            // a.find('h4').text('Credit:' items[i].credit);
+            a.find('a').attr('data-id', items[i].supply_id);
+            // a.find('a').attr('href', href);
         }
         bind();
-    });
+    }); 
     
 };
 
-function need(cat){
+function need(cat,bind){
     console.log('in need', cat);
     $.getJSON(
         '/need/'+cat,
     {},
     function(items){
-        console.log(items);
-        // console.log('items[cat]',items[cat]._id);
+        console.log('need get',items);
         temp.addClass('active');
         $(flag).empty();
         for(var i=0; i<items.length; i++){
             var a = $(donate).appendTo(flag);
-            a.find('h3').text('latest item'+items[i]._id);
-            a.find('h4').addClass('hide').text(items[i]._id);
-            a.find('a').attr('id','more');
+            a.find('h3').text(items[i].item_name);
+            a.find('a').attr('data-id', items[i].need_id);
         }
-    }
-    );
+        bind();
+    });
 };
 
 function more(charity, id){
     console.log('in more', id);
     $.getJSON(
-        '/more/'+charity+'/'+id,
+        '/item/'+charity+'/'+id,
     {},
-    function(items){
-        console.log(items);
-        // console.log('items[cat]',items[cat]._id);
-        // temp.addClass('active');
+    function(item){
+        console.log('more get',item);
         $(flag).empty();
-        $(detail).appendTo(flag).find('h3').text('item detail'+items._id);
-
+        var a = $(detail).appendTo(flag);
+        a.find('h3').text(item.item_name);
+        a.find('h4').text('credit:' + item.credit);
+        a.find('p').text('Descripttion:' + item.description);
     }
     );
 };
 
+function moreListener(){       
+    $('.more').click(function(){
+        // console.log('more button click');
+        var id = $( this ).data('id');
+        console.log(id);
+        more(bool_charity,id);
+    });
+}
+
 charity_btn.click(function(){
     bool_charity = 1;
     console.log('charity button',bool_charity);
-    need(0);
+    need(0, moreListener);
     var a= $(charity_btn).parent('li');
     a.addClass('active');
     a.prev().removeClass('active');
@@ -108,7 +116,7 @@ charity_btn.click(function(){
 trade_btn.click(function(){
     bool_charity = 0;
     console.log('trade_btn',bool_charity);
-    load(0);
+    load(0, moreListener);
     var a= $(trade_btn).parent('li');
     a.addClass('active');
     a.next().removeClass('active');
@@ -118,10 +126,10 @@ trade_btn.click(function(){
 
 latest_btn.click(function(){
     if(bool_charity === 0){
-        load(0);
+        load(0, moreListener);
     } 
     else{
-      need(0);  
+      need(0, moreListener);  
     } 
     console.log('latest', bool_charity)
     temp.removeClass('active');
@@ -131,10 +139,10 @@ latest_btn.click(function(){
 
 cloth_btn.click(function(){
     if(bool_charity === 0){
-        load(1);
+        load(1, moreListener);
     } 
     else{
-      need(1);  
+      need(1, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -142,10 +150,10 @@ cloth_btn.click(function(){
 });
 house_btn.click(function(){
     if(bool_charity === 0){
-        load(2);
+        load(2, moreListener);
     } 
     else{
-      need(2);  
+      need(2, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -153,10 +161,10 @@ house_btn.click(function(){
 });
 stationary_btn.click(function(){
     if(bool_charity === 0){
-        load(3);
+        load(3, moreListener);
     } 
     else{
-      need(3);  
+      need(3, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -164,10 +172,10 @@ stationary_btn.click(function(){
 });
 food_btn.click(function(){
     if(bool_charity === 0){
-        load(4);
+        load(4, moreListener);
     } 
     else{
-      need(4);  
+      need(4, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -175,10 +183,10 @@ food_btn.click(function(){
 });
 furniture_btn.click(function(){
     if(bool_charity === 0){
-        load(5);
+        load(5, moreListener);
     } 
     else{
-      need(5);  
+      need(5, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -186,10 +194,10 @@ furniture_btn.click(function(){
 });
 threeC_btn.click(function(){
     if(bool_charity === 0){
-        load(6);
+        load(6, moreListener);
     } 
     else{
-      need(6);  
+      need(6, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -197,10 +205,10 @@ threeC_btn.click(function(){
 });
 kitchen_btn.click(function(){
     if(bool_charity === 0){
-        load(7);
+        load(7, moreListener);
     } 
     else{
-      need(7);  
+      need(7, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
@@ -208,28 +216,16 @@ kitchen_btn.click(function(){
 });
 clean_btn.click(function(){
     if(bool_charity === 0){
-        load(8);
+        load(8, moreListener);
     } 
     else{
-      need(8);  
+      need(8, moreListener);  
     }
     temp.removeClass('active');
     temp = $(this).parent('li');
     temp.addClass('active');
 });
 
-function moreListener(){       
-    $('.more').click(function(){
-        console.log('more button click');
-        var id = $( this ).data('id');
-
-
-        console.log(id);
-        // var id = $(this).prev('h4').text();
-        // console.log(id);
-        // more(bool_charity,id);
-    });
-}
 
 // $('#myModal').modal(options);
 

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var NeedSchema = new Schema({
-    // need_id    : String,
+    need_id    : String,
     needer_name: String,
     item_name  : String,
     tel		   : String,

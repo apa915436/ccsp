@@ -5,8 +5,10 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
+var partials = require('express-partials');
 var routes  = require( './routes' );
 var user  = require( './routes/user' );
+var item  = require( './routes/item' );
 // var flash = require('connect-flash');
 
 // require('./config/passport'); // TODO [FB] : Passport configuration
@@ -18,6 +20,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '/public/html'));
 app.set('view engine', 'ejs');
+app.use(partials());
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -52,8 +55,7 @@ app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
 app.post('/login', routes.login);
-// app.get('more/:id',routes.more);
-app.get('/item/:charity/:id',routes.item);
+app.get('/item/:charity/:id',item.item);
 
 app.get('/user', user.index);
 app.post('/user', user.create);

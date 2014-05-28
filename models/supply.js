@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var SupplySchema = new Schema({
-    // supply_id  : String,
+    supply_id       : String,
     supplier_name	: String,
     tel				: String,
     email			: String,

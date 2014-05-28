@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Trans = new Schema({
+var TransChema = new Schema({
     supply_id  : String,
     buyer_id   : String,
     amount	   : Number,
@@ -10,4 +10,4 @@ var Trans = new Schema({
     updated_at : Date
 });
 
-mongoose.model( 'Trans', Trans );
+mongoose.model( 'Trans', TransChema );

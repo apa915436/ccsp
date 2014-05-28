@@ -18,6 +18,7 @@
   "homepage": "https://github.com/apa915436/ccsp",
   "dependencies": {
     "express": "3.4.8",
+    "express-partials": "*",
     "ejs": "*",
     "mongoose": "*",
     "connect-flash": "*",
