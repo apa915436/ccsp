@@ -49,8 +49,7 @@ app.get('/home',routes.home)
 app.get('/latest',routes.latest)
 app.get('/charity',routes.charity)
 app.get('/upload', routes.upload);
-
-
+app.post('/login', routes.login);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

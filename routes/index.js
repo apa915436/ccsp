@@ -40,6 +40,12 @@ exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
 }
 
+exports.login = function(req, res){
+	console.log("login function");
+	var account = req.account;
+	var password = req.password;
+	console.log(account+ " " + password);
+}
  // vote.save(function(err, newVote){
     
  //    var p = [];
