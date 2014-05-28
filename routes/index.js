@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-// var promise = require( 'promise');
+var promise = require('promise');
 var Supply = mongoose.model('Supply');
 var Need = mongoose.model('Need');
 
@@ -20,10 +20,10 @@ exports.home = function(req, res) {
 
 exports.supply = function(req, res) {
 	// console.log('in latest model');
-	console.log('in server ', req.params.id);
+	console.log('in supply catogory ', req.params.id);
 	Supply.
 	find({
-		name: req.params.id
+		catogory: req.params.id
 	}).
 	exec(function(err, items) {
 		if (err) {
@@ -34,11 +34,11 @@ exports.supply = function(req, res) {
 }
 
 exports.need = function(req, res) {
-	console.log('in need model');
-	console.log('in server ', req.params.id);
+	// console.log('in need model');
+	console.log('in need catogory ', req.params.id);
 	Need.
 	find({
-		name: req.params.id
+		catogory: req.params.id
 	}).
 	exec(function(err, items) {
 		if (err) {
@@ -50,29 +50,46 @@ exports.need = function(req, res) {
 
 exports.create = function(req, res) {
 	// console.log(req.body.name);
-	new Need({
-		name: req.body.name,
+	new Supply({
+		item_name: req.body.item_name,
+		catogory: req.body.catogory,
 		updated_at: Date.now()
 	}).save(function(err, need, count) {
 		if (err) return next(err);
-		console.log('insert need successed');
+		console.log('insert supply successed');
 		res.redirect('home');
 	});
 
 };
 
-exports.more = function(req, res) {
+exports.item = function(req, res) {
+	console.log('charity or not', req.params.charity);
 	console.log('in more model ', req.params.id);
-	Need.
-	find({
-		_id: req.params.id
-	}).
-	exec(function(err, item) {
-		if (err) {
-			console.error(err);
-		};
-		res.json(item);
-	});
+	if (req.params.charity === 0) {
+		Supply.
+		find({
+			_id: req.params.id
+		}).
+		exec(function(err, item) {
+			if (err) {
+				console.error(err);
+			};
+			// res.json(item);
+			res.render('item');
+		});
+	} else {
+		Need.
+		find({
+			_id: req.params.id
+		}).
+		exec(function(err, item) {
+			if (err) {
+				console.error(err);
+			};
+			// res.json(items);
+			res.render('item');
+		});
+	}
 }
 
 exports.upload = function(req, res) {

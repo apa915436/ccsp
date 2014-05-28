@@ -14,3 +14,10 @@
 .insertflag{
 	text-align: center;
 }
+.hide{
+	font-size: 0; /* 文字大小歸零 */
+	display:block; /* 定義為區塊元素 */
+	line-height: 0; /* 行高歸零 */
+	overflow: hidden; /* 溢出隱藏 */
+	text-indent: -9999px;
+}

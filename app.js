@@ -43,6 +43,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
 // Routes
 app.get('/', routes.index);
 app.get('/home',routes.home);
@@ -51,7 +52,8 @@ app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
 app.post('/login', routes.login);
-app.get('more/:id',routes.more);
+// app.get('more/:id',routes.more);
+app.get('/item/:charity/:id',routes.item);
 
 app.get('/user', user.index);
 app.post('/user', user.create);
