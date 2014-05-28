@@ -50,7 +50,8 @@ app.get('/supply/:id',routes.supply);
 app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
-app.get('more/:id',routes.more);
+app.get('/item/:charity/:id',routes.item);
+// app.get('item',routes.item);
 
 app.get('/user', user.index);
 app.post('/user', user.create);

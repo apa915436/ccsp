@@ -1,5 +1,5 @@
 var mongoose = require( 'mongoose' );
-// var promise = require( 'promise');
+var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
 var Need   = mongoose.model('Need');
 
@@ -51,16 +51,31 @@ exports.create = function ( req, res){
 
 };
 
-exports.more = function (req, res) {
+exports.item = function (req, res) {
+ 	console.log('charity or not',req.params.charity);
  	console.log('in more model ',req.params.id);
- 	Need.
- 		find({_id: req.params.id}).
- 		exec( function (err, item){
-	    	if(err){
-	      		console.error(err);
-	    	};
-	    	res.json(item);
-	    });       		 	
+ 	if(req.params.charity===0){
+ 		Supply.
+ 			find({_id: req.params.id}).
+	 		exec( function (err, item){
+		    	if(err){
+		      		console.error(err);
+		    	};
+		    	// res.json(item);
+		    	res.render('item');
+		    });
+ 	}
+ 	else{
+	 	Need.
+	 		find({_id: req.params.id}).
+	 		exec( function (err, item){
+		    	if(err){
+		      		console.error(err);
+		    	};
+		    	// res.json(items);
+		    	res.render('item');
+		    });       		 	
+ 	}
 }
 
 exports.upload = function (req, res) {
