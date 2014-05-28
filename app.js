@@ -43,6 +43,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
 // Routes
 app.get('/', routes.index);
 app.get('/home',routes.home);
@@ -50,14 +51,14 @@ app.get('/supply/:id',routes.supply);
 app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
+app.post('/login', routes.login);
+// app.get('more/:id',routes.more);
 app.get('/item/:charity/:id',routes.item);
-// app.get('item',routes.item);
 
 app.get('/user', user.index);
 app.post('/user', user.create);
 app.post('/user/login', user.login);
 app.get('/user/logout', user.logout);
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

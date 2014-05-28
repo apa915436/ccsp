@@ -1,6 +1,6 @@
 (function(){
 
-var item = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info">More</a></div></div></div>',
+var item = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info more">More</a></div></div></div>',
     donate = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info">More</a></div></div></div>',
     detail = '<div class="col-sm-5"><img class="item_img_size" src="../img/rice_cooker.jpg"></div><div class="item_holder">Andy Chang</div><div class="credit">Credit: 100</div><div class="item_description">家裡不要的大同電鍋ＸＤ<br>可以燒菜煮飯<br>我樣樣都行歐！<br>快把我帶回家：）<br>其實我是商品描述！</div><button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button></div></div></div>';
 
@@ -19,13 +19,13 @@ var addButton       = $('#add'),
 
 var flag = $('.modify');
 var temp = $(latest_btn).parent('li');;
-var newitem = {name: 0};
+var newitem = {item_name:'a', catogory: 0};
 var i=0;
 var bool_charity=0;
 
 addButton.click(function(){
     // console.log(newitem.name);
-    newitem.name = i++;
+    newitem.catogory = i++;
     $.ajax({
             type: 'POST',
             data: newitem,
@@ -35,9 +35,9 @@ addButton.click(function(){
         });
 })
 
-load(0);
+load(0, moreListener);
 
-function load(cat){
+function load(cat, bind){
     console.log('in load', cat);
     $.getJSON(
         '/supply/'+cat,
@@ -49,14 +49,15 @@ function load(cat){
         $(flag).empty();
         for(var i=0; i<items.length; i++){
             var a = $(item).appendTo(flag);
-            a.find('h3').text('latest item'+items[i]._id);
-            a.find('h4').addClass('hide').text(items[i]._id);
-            var href = '/item/'+bool_charity+'/'+items[i]._id;
+            a.find('h3').text(items[i].item_name+' catogory:'+items[i].catogory);
+            // a.find('h4').addClass('hide').text(items[i]._id);
+            // var href = '/item/'+bool_charity+'/'+items[i]._id;
             // a.find('a').attr('href',href);
-            a.find('a').attr('id','more');
+            a.find('a').attr('data-id', items[i]._id);
         }
-    }
-    );
+        bind();
+    });
+    
 };
 
 function need(cat){
@@ -216,14 +217,19 @@ clean_btn.click(function(){
     temp = $(this).parent('li');
     temp.addClass('active');
 });
-            
-$('#more').click(function(){
-    console.log('more button click')
-    // console.log(this);
-    // var id = $(this).prev('h4').text();
-    // console.log(id);
-    // more(bool_charity,id);
-});
+
+function moreListener(){       
+    $('.more').click(function(){
+        console.log('more button click');
+        var id = $( this ).data('id');
+
+
+        console.log(id);
+        // var id = $(this).prev('h4').text();
+        // console.log(id);
+        // more(bool_charity,id);
+    });
+}
 
 // $('#myModal').modal(options);
 
