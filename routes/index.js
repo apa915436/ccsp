@@ -1,6 +1,7 @@
 var mongoose = require( 'mongoose' );
-var promise = require( 'promise');
+// var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
+var Need   = mongoose.model('Need');
 
 
 exports.index = function (req, res) {
@@ -11,35 +12,62 @@ exports.home = function (req, res) {
   	res.render('home', {title: 'Love Spreading'});
 }
 
-exports.latest = function (req, res) {
+exports.supply = function (req, res) {
  	// console.log('in latest model');
- 	
+ 	console.log('in server ',req.params.id);
  	Supply.
- 		find().
- 		exec( function (err, latests){
+ 		find({name: req.params.id}).
+ 		exec( function (err, items){
 	    	if(err){
 	      		console.error(err);
 	    	};
-	    	res.render('home',{latests: latests});
-      	});	 	
+	    	res.json(items);
+	    });       		 	
 }
 
-exports.charity = function (req, res) {
-	// console.log('in charity model');
-
- 	Supply.
- 		find().
- 		exec( function (err, charity){
+exports.need = function (req, res) {
+ 	console.log('in need model');
+ 	console.log('in server ',req.params.id);
+ 	Need.
+ 		find({name: req.params.id}).
+ 		exec( function (err, items){
 	    	if(err){
 	      		console.error(err);
 	    	};
-	    	res.render('home',{charity: charity});
-      	});
+	    	res.json(items);
+	    });       		 	
 }
+
+exports.create = function ( req, res){
+  	// console.log(req.body.name);
+  	new Need({
+      	name   : req.body.name,
+      	updated_at : Date.now()
+  	}).save( function ( err, need, count ){
+    	if( err ) return next( err );
+    	console.log('insert need successed');
+    	res.redirect( 'home' );
+  	});
+
+};
+
+exports.more = function (req, res) {
+ 	console.log('in more model ',req.params.id);
+ 	Need.
+ 		find({_id: req.params.id}).
+ 		exec( function (err, item){
+	    	if(err){
+	      		console.error(err);
+	    	};
+	    	res.json(item);
+	    });       		 	
+}
+
 exports.upload = function (req, res) {
 	res.render('upload',{title: 'Love Spreading'});
 }
 
+<<<<<<< HEAD
 exports.login = function(req, res){
 	console.log("login function");
 	var account = req.account;
@@ -187,3 +215,5 @@ exports.login = function(req, res){
 
 //   next();
 // };
+=======
+>>>>>>> 5fb643d42c01a861bf02874eff56cf88eede8cb5
