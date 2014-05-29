@@ -7,8 +7,6 @@ var Need   = mongoose.model('Need');
 exports.item = function (req, res) {
  	console.log('charity or not',req.params.charity);
  	console.log('in more model ',req.params.id);
- 	// var id = 'ObjectId("'+req.params.id+'")';
- 	// console.log(id);
 
  	if(req.params.charity==0){
  		Supply.
@@ -18,7 +16,12 @@ exports.item = function (req, res) {
 		      		console.error(err);
 		    	};
 		    	console.log(item);
-		    	res.json(item);
+				res.render('item', {
+					title: 'Love Spreading',
+					item: item,
+					user: req.session.user
+				})
+		    	// res.json(item);
 		    });
  	}
  	else{
@@ -29,9 +32,12 @@ exports.item = function (req, res) {
 		      		console.error(err);
 		    	};
 		    	console.log(item);
-		    	res.json(item);
+		    	res.render('item', {
+					title: 'Love Spreading',
+					item: item,
+					user: req.session.user
+				})
+		    	// res.json(item);
 		    });       		 	
  	}
 }
-
-

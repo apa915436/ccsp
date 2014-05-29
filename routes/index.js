@@ -15,7 +15,7 @@ exports.index = function(req, res) {
 }
 
 exports.home = function(req, res) {
-	console.log(req.session.user);
+	console.log("user session check: " + req.session.user);
 	res.render('home', {
 		title: 'Love Spreading',
 		user: req.session.user
@@ -33,6 +33,11 @@ exports.supply = function(req, res) {
 		if (err) {
 			console.error(err);
 		};
+		// res.render('home', {
+		// 	title: 'Love Spreading',
+		// 	items: items,
+		// 	user: req.session.user
+		// })
 		res.json(items);
 	});
 }

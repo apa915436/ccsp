@@ -49,12 +49,12 @@ function load(cat, bind){
         $(flag).empty();
         for(var i=0; i<items.length; i++){
             var a = $(item).appendTo(flag);
-            // var href = '/item/'+bool_charity+'/'+items[i]._id;
+            var href = '/item/'+bool_charity+'/'+items[i].supply_id;
             console.log(items[i]._id);
             a.find('h3').text(items[i].item_name);
             // a.find('h4').text('Credit:' items[i].credit);
             a.find('a').attr('data-id', items[i].supply_id);
-            // a.find('a').attr('href', href);
+            a.find('a').attr('href', href);
         }
         bind();
     }); 
@@ -72,8 +72,10 @@ function need(cat,bind){
         $(flag).empty();
         for(var i=0; i<items.length; i++){
             var a = $(donate).appendTo(flag);
+            var href = '/item/'+bool_charity+'/'+items[i].need_id;
             a.find('h3').text(items[i].item_name);
             a.find('a').attr('data-id', items[i].need_id);
+            a.find('a').attr('href', href);
         }
         bind();
     });
