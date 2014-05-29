@@ -113,6 +113,19 @@ exports.upload = function(req, res) {
 exports.uploadsupply = function(req, res){
 	console.log(req.body);
 	console.log("user session check: " + req.session.user);
+	var face, delivery;
+	if (req.body.Checkbox1 == "face") {
+		face = req.body.face_location;
+	}
+	else{
+		face = false;
+	}
+	if (req.body.Checkbox2 == "delivery") {
+		delivery = req.body.delivery_cost;
+	}
+	else{
+		delivery = false;
+	}
 	new Supply({
 		supply_id       : supply_index++,
 	    supplier_name	: req.body.name,
@@ -122,8 +135,8 @@ exports.uploadsupply = function(req, res){
 	    catogory   		: req.body.catogory,
 	    amount	   		: req.body.amount,
 	    credit	   		: req.body.credit,
-	    face       		: req.body.Checkbox1,
-	    delivery   		: req.body.Checkbox2,
+	    face       		: face,
+	    delivery   		: delivery,
       	updated_at 		: Date.now()
   	}).save( function ( err, need, count ){
     	if( err ) return next( err );
