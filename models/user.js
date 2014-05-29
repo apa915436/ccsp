@@ -7,7 +7,7 @@ var Userschema = new Schema({
 	email: String,
 	name: String,
 	tel: String,
-	charity: Number,
+	charity: { type:Number, default: 0},
 	credit: { type: Number, default: 100 },
 	updated_at: Date,
 	create_at: Date
