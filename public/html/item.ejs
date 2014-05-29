@@ -53,12 +53,6 @@
           <br>
           <!--Sidebar content-->
           <ul class="nav nav-sidebar">
-            <li>
-              <div>
-                <input type="text" data-provide="typeahead" placeholder=" Search">
-                <a href="search.html" class="btn btn-info">Go</a>
-              </div>
-            </li>
             <br>
             <li><a href="#" id="latest">最新</a></li>
             <li><a href="#" id="cloth">衣物</a></li>
@@ -74,27 +68,22 @@
 
         <div class="col-sm-9 col-md-10 main content">
           <!--Body content-->
-          <% item.forEach(function( detail){ %>
           <div class="col-sm-5">
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
-          <div class="item_holder">supply_id / need_id：<%= detail.supply_id %></div>
-          <div class="item_holder">商品名稱：<%= detail.item_name %></div>
-          <div class="item_holder">上架人：<%= detail.supplier_name %></div>
-          <% if(!detail.credit){ %>
-          <div class="credit">價格：<%= detail.credit %></div>
-          <%} else{ %>
-          <div class="credit">價格：<%= detail.credit %></div>
-          <% } %>
-          <div class="item_description">商品描述<br><%= detail.description %></div>
+          <div class="item_holder">supply_id / need_id：<%= item.supply_id %></div>
+          <div class="item_holder">商品名稱：<%= item.item_name %></div>
+          <div class="item_holder">上架人：<%= item.supplier_name %></div>
+          <div class="credit">價格：<%= item.credit %></div>
+          <div class="credit">價格：<%= item.credit %></div>
+          <div class="item_description">商品描述<br><%= item.description %></div>
           <form action="/deal" method="post">
-          <input type="radio" name="method" id="face">  面交：<%= detail.face %> <br>
-          <input type="radio" name="method" id="delivery">  郵寄：<%= detail.delivery %> <br>
+          <input type="radio" name="method" id="face">  面交：<%= item.face %> <br>
+          <input type="radio" name="method" id="delivery">  郵寄：<%= item.delivery %> <br>
           </form>
             <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
           </div>
           </div>
-          <% }) %>
         </div>
     <!-- Modal -->
     <div class="modal fade" id="dealModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
