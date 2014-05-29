@@ -24,31 +24,57 @@ exports.home = function(req, res) {
 exports.supply = function(req, res) {
 	// console.log('in latest model');
 	console.log('in supply catogory ', req.params.id);
-	Supply.
-	find({
-		catogory: req.params.id
-	}).
-	exec(function(err, items) {
-		if (err) {
-			console.error(err);
-		};
-		res.json(items);
-	});
+	if(req.params.id == 0){
+		Supply.
+		find().
+		sort( '-updated_at' ).
+		exec(function(err, items) {
+			if (err) {
+				console.error(err);
+			};
+			res.json(items);
+		});	
+	}
+	else{
+		Supply.
+		find({
+			catogory: req.params.id
+		}).
+		exec(function(err, items) {
+			if (err) {
+				console.error(err);
+			};
+			res.json(items);
+		});		
+	}
 }
 
 exports.need = function(req, res) {
 	// console.log('in need model');
 	console.log('in need catogory ', req.params.id);
-	Need.
-	find({
-		catogory: req.params.id
-	}).
-	exec(function(err, items) {
-		if (err) {
-			console.error(err);
-		};
-		res.json(items);
-	});
+	if(req.params.id == 0){
+		Need.
+		find().
+		sort( '-updated_at' ).
+		exec(function(err, items) {
+			if (err) {
+				console.error(err);
+			};
+			res.json(items);
+		});	
+	}
+	else{
+		Need.
+		find({
+			catogory: req.params.id
+		}).
+		exec(function(err, items) {
+			if (err) {
+				console.error(err);
+			};
+			res.json(items);
+		});
+	}
 }
 
 exports.create = function ( req, res){

@@ -2,15 +2,13 @@
 <html>
   <head>
     <title>Love Spreading</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <meta http-equiv="Content-Style-Type" content="text/css" />
-    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="../../css/selfdefine.css" rel="stylesheet" media="screen">
+    <link href="../../css/user.css" rel="stylesheet" media="screen">
   </head>
-  <body>
-    
+  <body> 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -20,12 +18,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home.html">Love Spreading</a>
+          <a class="navbar-brand" href="home">Love Spreading</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Setting</a></li>
+            <li><a href="home">物品瀏覽</a></li>
+            <li><a href="upload">物品捐贈</a></li>
+            <% if(!user){ %>
+            <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+            <% } else { %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/user/logout">Logout</a></li>
+              </ul>
+            </li>
+            <% } %>
+            
             <li><a href="#">Help</a></li>
           </ul>
         </div>
@@ -33,26 +42,36 @@
     </nav>
     <ul class="nav nav-tabs">
       <li class="active">
-        <a href="#">自由交易</a>
+        <a href="#" id="trade">自由交易</a>
       </li>
-      <li><a href="#">公益特區</a></li>
+      <li><a href="#" id="charity">公益特區</a></li>
     </ul>
     <div class="container-fluid">
       <!--Content and sidebar-->
       <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+          <br>
           <!--Sidebar content-->
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">衣物</a></li>
-            <li><a href="#">家電</a></li>
-            <li><a href="#">文具</a></li>
-            <li><a href="#">食品</a></li>
-            <li><a href="#">傢俱</a></li>
-            <li><a href="#">3C產品</a></li>
-            <li><a href="#">廚房用具</a></li>
-            <li><a href="#">清潔用具</a></li>
+            <li>
+              <div>
+                <input type="text" data-provide="typeahead" placeholder=" Search">
+                <a href="search.html" class="btn btn-info">Go</a>
+              </div>
+            </li>
+            <br>
+            <li><a href="#" id="latest">最新</a></li>
+            <li><a href="#" id="cloth">衣物</a></li>
+            <li><a href="#" id="house">家電</a></li>
+            <li><a href="#" id="stationary">文具</a></li>
+            <li><a href="#" id="food">食品</a></li>
+            <li><a href="#" id="furniture">傢俱</a></li>
+            <li><a href="#" id="threeC">3C產品</a></li>
+            <li><a href="#" id="kitchen">廚房用具</a></li>
+            <li><a href="#" id="clean">清潔用具</a></li>
           </ul>
         </div>
+
         <div class="col-sm-9 col-md-10 main content">
           <!--Body content-->
           <% item.forEach(function( detail){ %>
@@ -62,7 +81,11 @@
           <div class="item_holder">supply_id / need_id：<%= detail.supply_id %></div>
           <div class="item_holder">商品名稱：<%= detail.item_name %></div>
           <div class="item_holder">上架人：<%= detail.supplier_name %></div>
+          <% if(!detail.credit){ %>
           <div class="credit">價格：<%= detail.credit %></div>
+          <%} else{ %>
+          <div class="credit">價格：<%= detail.credit %></div>
+          <% } %>
           <div class="item_description">商品描述<br><%= detail.description %></div>
           <form action="/deal" method="post">
           <input type="radio" name="method" id="face">  面交：<%= detail.face %> <br>
@@ -97,4 +120,6 @@
   </body>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/home.js"></script>
+
 </html>
