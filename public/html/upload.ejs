@@ -46,7 +46,7 @@
                       <h1 class="text-center">物資上傳區</h1>
                   </div>
                   <div><!-- body -->
-                      <form class="form col-md-12 center-block" role="form" name="uploadform">
+                      <form class="form col-md-12 center-block" role="form" name="uploadform" method="POST" action="/uploadsupply">
                         <div class="form-group">
                           <label>您的稱呼</label>
                           <input type="text" class="form-control input-md" placeholder="阿呆" id="name">
@@ -112,7 +112,7 @@
                         </div>
 
                         <div>
-                          <button class="btn btn-primary btn-lg btn-block" id="upload">送出</button>
+                          <button class="btn btn-primary btn-lg btn-block" id="upload" type="submit">送出</button>
                           <span class="pull-right"><a href="#">上傳說明</a></span>
                         </div>
                       </form>

@@ -125,10 +125,13 @@ exports.uploadsupply = function(req, res){
 	    credit	   		: req.body.credit,
 	    face       		: req.body.face,
 	    delivery   		: req.body.delivery,
-      	updated_at : Date.now()
+      	updated_at 		: Date.now()
   	}).save( function ( err, need, count ){
     	if( err ) return next( err );
     	console.log('upload supply successfully');
+    	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+		var flash = '<h1>成功上傳!</h1></html>';
+		res.end(redirect+flash);
   	});
 }
 
