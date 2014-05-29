@@ -2,10 +2,6 @@ var User = require('../models/user.js');
 
 // console.log(User);
 
-
-
-
-
 exports.index = function(req, res) {
 	console.log(req.session);
 	req.session.ct = req.session.ct ? req.session.ct + 1 : 1;

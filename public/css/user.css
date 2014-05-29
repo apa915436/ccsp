@@ -1,7 +1,8 @@
 .holder{
 	width: 150px;
 	height: 150px;
-	margin: 0px auto;
+	display:block; 
+	margin:auto;
 }
 .searchbar{
 	text-align: center;
@@ -20,4 +21,7 @@
 	line-height: 0; /* 行高歸零 */
 	overflow: hidden; /* 溢出隱藏 */
 	text-indent: -9999px;
+}
+.block{
+	border: 1px solid #ddd;
 }

@@ -1,4 +1,3 @@
-
 var mongoose = require( 'mongoose' );
 var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
@@ -33,11 +32,6 @@ exports.supply = function(req, res) {
 		if (err) {
 			console.error(err);
 		};
-		// res.render('home', {
-		// 	title: 'Love Spreading',
-		// 	items: items,
-		// 	user: req.session.user
-		// })
 		res.json(items);
 	});
 }
@@ -80,36 +74,6 @@ exports.create = function ( req, res){
   	res.redirect( 'home' );
 
 };
-
-exports.item = function(req, res) {
-	console.log('charity or not', req.params.charity);
-	console.log('in more model ', req.params.id);
-	if (req.params.charity === 0) {
-		Supply.
-		find({
-			_id: req.params.id
-		}).
-		exec(function(err, item) {
-			if (err) {
-				console.error(err);
-			};
-			// res.json(item);
-			res.render('item');
-		});
-	} else {
-		Need.
-		find({
-			_id: req.params.id
-		}).
-		exec(function(err, item) {
-			if (err) {
-				console.error(err);
-			};
-			// res.json(items);
-			res.render('item');
-		});
-	}
-}
 
 exports.upload = function(req, res) {
 	res.render('upload', {

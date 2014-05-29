@@ -13,9 +13,5 @@ var NeedSchema = new Schema({
     updated_at : Date
 });
 
-// var NeedSchema = new Schema({
-//     name  : Number,
-//     updated_at : Date
-// });
 
 mongoose.model( 'Need', NeedSchema );

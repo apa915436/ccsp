@@ -16,9 +16,4 @@ var SupplySchema = new Schema({
     updated_at 		: Date
 });
 
-// var SupplySchema = new Schema({
-//     name  : Number,
-//     updated_at : Date
-// });
-
 var Supply = mongoose.model('Supply', SupplySchema); 

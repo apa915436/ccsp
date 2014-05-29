@@ -2,10 +2,12 @@
 <html>
   <head>
     <title>Love Spreading</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="../css/selfdefine.css" rel="stylesheet" media="screen">
+    <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="../../css/selfdefine.css" rel="stylesheet" media="screen">
   </head>
   <body>
     
@@ -53,23 +55,30 @@
         </div>
         <div class="col-sm-9 col-md-10 main content">
           <!--Body content-->
-          
+          <% item.forEach(function( detail){ %>
           <div class="col-sm-5">
-            <img class="item_img_size" src="../img/rice_cooker.jpg">
+            <img class="item_img_size" src="../../img/closet.jpg">
           </div>
-          <div class="item_holder"><%= item.catolog %></div>
-          <div class="credit"><%= item.credit %></div>
-          <div class="item_description">家裡不要的大同電鍋ＸＤ<br>可以燒菜煮飯<br>我樣樣都行歐！<br>快把我帶回家：）<br>其實我是商品描述！</div>
-            <button class="btn buy_btn" data-toggle="modal" data-target="#myModal">我要交換</button>
+          <div class="item_holder">supply_id / need_id：<%= detail.supply_id %></div>
+          <div class="item_holder">商品名稱：<%= detail.item_name %></div>
+          <div class="item_holder">上架人：<%= detail.supplier_name %></div>
+          <div class="credit">價格：<%= detail.credit %></div>
+          <div class="item_description">商品描述<br><%= detail.description %></div>
+          <form action="/deal" method="post">
+          <input type="radio" name="method" id="face">  面交：<%= detail.face %> <br>
+          <input type="radio" name="method" id="delivery">  郵寄：<%= detail.delivery %> <br>
+          </form>
+            <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
           </div>
           </div>
+          <% }) %>
         </div>
     <!-- Modal -->
     <div class="modal fade" id="dealModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="text-center">Danger</h1>
+            <h1 class="text-center">Attention</h1>
           </div>
           <div class="modal-body">
             <p>It will cost you credits.</p>
@@ -87,6 +96,5 @@
     <!-- modal end -->    
   </body>
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/item.js"></script>
+    <script src="../../js/bootstrap.js"></script>
 </html>

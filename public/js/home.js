@@ -1,8 +1,7 @@
 (function(){
 
-var item = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info more">More</a></div></div></div>',
-    donate = '<div class="col-sm-4"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><h3></h3><h4></h4><a class="btn btn-info more">More</a></div></div></div>',
-    detail = '<div class="col-sm-5"><img class="item_img_size" src="../img/closet.jpg"></div><h3></h3><h4></h4><p class="item_description"></p><button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button></div></div></div>';
+var item = '<div class="col-sm-4 block"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h3></h3><p></p></div><br><br><a class="btn btn-info more pull-right">More</a></div></div></div></div>',
+    donate = '<div class="col-sm-4 block"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h3></h3><p></p></div><br><br><a class="btn btn-info more pull-right">More</a></div></div></div></div>';
 
 var addButton       = $('#add'),
     charity_btn     = $('#charity'),   
@@ -50,9 +49,9 @@ function load(cat, bind){
         for(var i=0; i<items.length; i++){
             var a = $(item).appendTo(flag);
             var href = '/item/'+bool_charity+'/'+items[i].supply_id;
-            console.log(items[i]._id);
-            a.find('h3').text(items[i].item_name);
-            // a.find('h4').text('Credit:' items[i].credit);
+            // console.log('item id',items[i]._id);
+            a.find('h3').text('商品名稱: '+items[i].item_name);
+            a.find('p').text('Credit: '+items[i].credit);
             a.find('a').attr('data-id', items[i].supply_id);
             a.find('a').attr('href', href);
         }
@@ -73,7 +72,9 @@ function need(cat,bind){
         for(var i=0; i<items.length; i++){
             var a = $(donate).appendTo(flag);
             var href = '/item/'+bool_charity+'/'+items[i].need_id;
-            a.find('h3').text(items[i].item_name);
+            // console.log('item id',items[i]._id);
+            a.find('h3').text('商品名稱: '+items[i].item_name);
+            a.find('p').text('需求數量: '+items[i].amount);
             a.find('a').attr('data-id', items[i].need_id);
             a.find('a').attr('href', href);
         }
@@ -81,21 +82,21 @@ function need(cat,bind){
     });
 };
 
-function more(charity, id){
-    console.log('in more', id);
-    $.getJSON(
-        '/item/'+charity+'/'+id,
-    {},
-    function(item){
-        console.log('more get',item);
-        $(flag).empty();
-        var a = $(detail).appendTo(flag);
-        a.find('h3').text(item.item_name);
-        a.find('h4').text('credit:' + item.credit);
-        a.find('p').text('Descripttion:' + item.description);
-    }
-    );
-};
+// function more(charity, id){
+//     console.log('in more', id);
+//     $.getJSON(
+//         '/item/'+charity+'/'+id,
+//     {},
+//     function(item){
+//         console.log('more get',item);
+//         $(flag).empty();
+//         var a = $(detail).appendTo(flag);
+//         a.find('h3').text(item.item_name);
+//         a.find('h4').text('credit:' + item.credit);
+//         a.find('p').text('Descripttion:' + item.description);
+//     }
+//     );
+// };
 
 function moreListener(){       
     $('.more').click(function(){

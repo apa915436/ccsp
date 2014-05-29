@@ -21,7 +21,6 @@ exports.item = function (req, res) {
 					item: item,
 					user: req.session.user
 				})
-		    	// res.json(item);
 		    });
  	}
  	else{
@@ -37,7 +36,6 @@ exports.item = function (req, res) {
 					item: item,
 					user: req.session.user
 				})
-		    	// res.json(item);
 		    });       		 	
  	}
 }
