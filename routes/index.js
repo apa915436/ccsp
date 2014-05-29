@@ -113,6 +113,25 @@ exports.upload = function(req, res) {
 
 }
 
+exports.uploadsupply = function(req, res){
+	new Supply({
+		supply_id       : supply_index++,
+	    supplier_name	: req.body.name,
+	    tel				: req.body.tel,
+	    email			: req.body.email,
+	    item_name		: req.body.item_name,
+	    catogory   		: req.body.catogory,
+	    amount	   		: req.body.amount,
+	    credit	   		: req.body.credit,
+	    face       		: req.body.face,
+	    delivery   		: req.body.delivery,
+      	updated_at : Date.now()
+  	}).save( function ( err, need, count ){
+    	if( err ) return next( err );
+    	console.log('upload supply successfully');
+  	});
+}
+
 exports.login = function(req, res) {
 	console.log("login function");
 	var account = req.account;

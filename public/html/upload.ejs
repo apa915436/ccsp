@@ -11,6 +11,7 @@
   <body>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/upload.js"></script>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -45,7 +46,7 @@
                       <h1 class="text-center">物資上傳區</h1>
                   </div>
                   <div><!-- body -->
-                      <form class="form col-md-12 center-block" role="form">
+                      <form class="form col-md-12 center-block" role="form" name="uploadform">
                         <div class="form-group">
                           <label>您的稱呼</label>
                           <input type="text" class="form-control input-md" placeholder="阿呆" id="name">
@@ -65,7 +66,7 @@
                           </div>
                           <div class="form-group col-md-3">
                             <label>物資分類</label>
-                            <select class="form-control" id="select1">
+                            <select class="form-control" id="category">
                               <option>衣物</option>
                               <option>家電</option>
                               <option>文具</option>
@@ -111,7 +112,7 @@
                         </div>
 
                         <div>
-                          <button class="btn btn-primary btn-lg btn-block" type="submit">送出</button>
+                          <button class="btn btn-primary btn-lg btn-block" id="upload">送出</button>
                           <span class="pull-right"><a href="#">上傳說明</a></span>
                         </div>
                       </form>
