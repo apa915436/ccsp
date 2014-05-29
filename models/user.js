@@ -8,7 +8,7 @@ var Userschema = new Schema({
 	name: String,
 	tel: String,
 	charity: Number,
-	credit: Number,
+	credit: { type: Number, default: 100 },
 	updated_at: Date,
 	create_at: Date
 });
