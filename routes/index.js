@@ -76,13 +76,17 @@ exports.create = function ( req, res){
 };
 
 exports.upload = function(req, res) {
+	console.log("user session check: " + req.session.user);
 	res.render('upload', {
-		title: 'Love Spreading'
+		title: 'Love Spreading',
+		user: req.session.user
 	});
 
 }
 
 exports.uploadsupply = function(req, res){
+	console.log(req.body);
+	console.log("user session check: " + req.session.user);
 	new Supply({
 		supply_id       : supply_index++,
 	    supplier_name	: req.body.name,
@@ -92,8 +96,8 @@ exports.uploadsupply = function(req, res){
 	    catogory   		: req.body.catogory,
 	    amount	   		: req.body.amount,
 	    credit	   		: req.body.credit,
-	    face       		: req.body.face,
-	    delivery   		: req.body.delivery,
+	    face       		: req.body.Checkbox1,
+	    delivery   		: req.body.Checkbox2,
       	updated_at 		: Date.now()
   	}).save( function ( err, need, count ){
     	if( err ) return next( err );
