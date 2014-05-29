@@ -16,11 +16,18 @@ exports.new = function(req, res) {
 };
 
 exports.create = function(req, res) {
-	var user = req.body;
-	User.create(user);
-	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
-	var flash = '<h1>' + req.body.name + ' 成功註冊!</h1></html>';
-	res.end(redirect+flash);
+	var newUser = req.body;
+	User.create(newUser, function(err, user){
+		console.log(err, user);
+		req.session.user = user;
+		if(err){
+			res.end(err);
+		}else{
+			var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+			var flash = '<h1>' + req.body.name + ' 成功註冊!</h1></html>';
+			res.end(redirect+flash);
+		}
+	});
 };
 
 exports.show = function(req, res) {
