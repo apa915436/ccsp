@@ -26,8 +26,17 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <% if(!user){ %>
             <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
-            <!-- <li><a href="#">Setting</a></li> -->
+            <% } else { %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/user/logout">Logout</a></li>
+              </ul>
+            </li>
+            <% } %>
+
             <li><a href="#">Help</a></li>
           </ul>
         </div>
@@ -43,26 +52,7 @@
       <!--Content and sidebar-->
       <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-          <br>
-          <!--Sidebar content-->
-          <ul class="nav nav-sidebar">
-            <li>
-              <div>
-                <input type="text" data-provide="typeahead" placeholder=" Search">
-                <a href="search.html" class="btn btn-info">Go</a>
-              </div>
-            </li>
-            <br>
-            <li class="active"><a href="#">最新</a></li>
-            <li><a href="#">衣物</a></li>
-            <li><a href="#">家電</a></li>
-            <li><a href="#">文具</a></li>
-            <li><a href="#">食品</a></li>
-            <li><a href="#">傢俱</a></li>
-            <li><a href="#">3C產品</a></li>
-            <li><a href="#">廚房用具</a></li>
-            <li><a href="#">清潔用具</a></li>
-          </ul>
+
         </div>
       <div class="col-sm-9 col-md-10 main content">
         <h1>Congratulation!!</h1>

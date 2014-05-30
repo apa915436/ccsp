@@ -51,19 +51,7 @@
       <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
           <br>
-          <!--Sidebar content-->
-          <ul class="nav nav-sidebar">
-            <br>
-            <li><a href="#" id="latest">最新</a></li>
-            <li><a href="#" id="cloth">衣物</a></li>
-            <li><a href="#" id="house">家電</a></li>
-            <li><a href="#" id="stationary">文具</a></li>
-            <li><a href="#" id="food">食品</a></li>
-            <li><a href="#" id="furniture">傢俱</a></li>
-            <li><a href="#" id="threeC">3C產品</a></li>
-            <li><a href="#" id="kitchen">廚房用具</a></li>
-            <li><a href="#" id="clean">清潔用具</a></li>
-          </ul>
+
         </div>
 
         <div class="col-sm-9 col-md-10 main content">
@@ -74,22 +62,26 @@
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
           <div class="col-sm-4">
-          <form role="form" name="dealform" method="POST" action="/deal">
-          <div class="item_holder" name="supply_id">supply_id：<%= item.supply_id %></div>
+          <div class="item_holder">supply_id：<%= item.supply_id %></div>
           <div class="item_holder">_id：<%= item._id %></div>
-          <div class="item_holder" name="item_name">商品名稱：<%= item.item_name %></div>
+          <div class="item_holder">商品名稱：<%= item.item_name %></div>
           <div class="item_holder">上架人：<%= item.supplier_name %></div>
           <div class="credit">單價：<%= item.credit %></div>
           <div class="credit">數量：<%= item.amount %></div>
           <div class="item_description">商品描述<br><%= item.description %></div>
           </div>
           <div class="col-sm-4">
+          <form role="form" name="dealform" method="POST" action="/deal">
           <div class="item_holder">交換資訊</div>
-            <label>您的稱呼  </label>
+          <input type="text" class="form-control input-md hidden"  id="supply_id" name= "supply_id" value="<%= item.supply_id %>">
+          <input type="text" class="form-control input-md hidden"  id="item_name" name= "item_name" value="<%= item.item_name %>">
+          <input type="text" class="form-control input-md hidden"  id="supplier_name" name= "supplier_name" value="<%= item.supplier_name %>">
+          <input type="text" class="form-control input-md hidden"  id="credit" name= "credit" value="<%= item.credit %>">
+            <!-- <label>您的稱呼  </label> -->
             <% if(!user){ %>
             <input type="text" class="form-control input-md" placeholder="阿呆" id="name" name="name"><br>
             <%} else{ %>
-            <input type="text" class="form-control input-md" id="name" name="name" value="<%= user.name%>"><br>
+            <input type="text" class="form-control input-md hidden" id="name" name="name" value="<%= user.name%>"><br>
             <% } %>
             <label>數量  </label>
             <input type="text" class="form-control input-md"  id="amount" name= "amount"><br>
@@ -106,6 +98,7 @@
             <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
             <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
           </div>
+          </form>
 
         <%} else{ %>
           <div class="col-sm-4">
@@ -145,7 +138,6 @@
               <button class="btn btn-info">Confirm</button>
               <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
             </div>  
-            </form>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var TransChema = new Schema({
 	trans_id   : String,
     supply_id  : String,
+    item_name  : String,
     buyer_id   : String,
     item_name  : String,
     amount	   : Number,

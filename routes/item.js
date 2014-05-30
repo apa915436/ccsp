@@ -10,8 +10,8 @@ exports.item = function (req, res) {
  	console.log('charity or not',req.params.charity);
  	console.log('in more model ',req.params.id);
  	console.log('in item page',req.params.id);
-
  	if(req.params.charity==0){
+
  		Supply.
  			find({supply_id: req.params.id}).
 	 		exec( function (err, item){
@@ -22,7 +22,7 @@ exports.item = function (req, res) {
 				res.render('item', {
 					title: 'Love Spreading',
 					item: item,
-					user: req.session.user
+					user: req.session.user,
 				})
 		    });
  	}
@@ -37,7 +37,7 @@ exports.item = function (req, res) {
 		    	res.render('item', {
 					title: 'Love Spreading',
 					item: item,
-					user: req.session.user
+					user: req.session.user,
 				})
 		    });       		 	
  	}
@@ -50,9 +50,10 @@ exports.deal = function(req, res){
 	var detail = {
 		trans_id   : trans_index++,	
 		supply_id  : req.body.supply_id,
+		item_name  : req.body.item_name,
     	buyer_id   : req.body.name,
     	amount	   : req.body.amount,
-    	credit	   : req.body.amount ,
+    	credit	   : req.body.credit * req.body.amount,
     	method     : req.body.method,
       	updated_at : Date.now()
       };
