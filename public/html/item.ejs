@@ -68,22 +68,38 @@
 
         <div class="col-sm-9 col-md-10 main content">
           <!--Body content-->
+        <% item.forEach(function(item){ %>
+        <% if(item.supply_id){ %>
           <div class="col-sm-5">
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
-          <div class="item_holder">supply_id / need_id：<%= item.supply_id %></div>
+          <div class="item_holder">supply_id：<%= item.supply_id %></div>
           <div class="item_holder">商品名稱：<%= item.item_name %></div>
           <div class="item_holder">上架人：<%= item.supplier_name %></div>
-          <div class="credit">價格：<%= item.credit %></div>
-          <div class="credit">價格：<%= item.credit %></div>
+          <div class="credit">單價：<%= item.credit %></div>
+          <div class="credit">數量：<%= item.amount %></div>
           <div class="item_description">商品描述<br><%= item.description %></div>
-          <form action="/deal" method="post">
-          <input type="radio" name="method" id="face">  面交：<%= item.face %> <br>
-          <input type="radio" name="method" id="delivery">  郵寄：<%= item.delivery %> <br>
-          </form>
+          <form role="form" name="dealform" method="POST" action="/deal">
+            <label>數量</label>
+            <input type="text" id="amount"><br>
+            <input type="radio" name="method" value="face">  面交：<%= item.face %> <br>
+            <input type="radio" name="method" value="delivery">  郵寄：<%= item.delivery %> <br>
             <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
+          </form>
           </div>
+        <%} else{ %>
+          <div class="col-sm-5">
+            <img class="item_img_size" src="../../img/closet.jpg">
           </div>
+          <div class="item_holder">need_id：<%= item.need_id %></div>
+          <div class="item_holder">商品名稱：<%= item.item_name %></div>
+          <div class="item_holder">上架人：<%= item.supplier_name %></div>
+          <div class="credit">需求數量：<%= item.amount %></div>
+          <div class="item_description">商品描述<br><%= item.description %></div>
+          <p>如有意捐贈，請透過以下方式聯繫公益團體</p>
+          <div class="tel">連絡電話: <%= item.tel %></div>
+          <div class="email">電子郵件: <%= item.email %></div>
+        <% }}) %>
         </div>
     <!-- Modal -->
     <div class="modal fade" id="dealModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -98,7 +114,7 @@
           </div>
           <div class="modal-footer">
             <div class="col-md-12">
-              <button class="btn btn-info"><a href="deal.html">Confirm</a></button>
+              <button class="btn btn-info" id="deal" type="submit">Confirm</button>
               <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
             </div>  
           </div>

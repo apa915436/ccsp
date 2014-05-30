@@ -49,7 +49,7 @@ function load(cat, bind){
         for(var i=0; i<items.length; i++){
             var a = $(item).appendTo(flag);
             var href = '/item/'+bool_charity+'/'+items[i].supply_id;
-            // console.log('item id',items[i]._id);
+            console.log('item id',items[i].supply_id);
             a.find('h3').text('商品名稱: '+items[i].item_name);
             a.find('p').text('Credit: '+items[i].credit);
             a.find('a').attr('data-id', items[i].supply_id);
