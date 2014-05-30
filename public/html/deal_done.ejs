@@ -66,38 +66,17 @@
         </div>
       <div class="col-sm-9 col-md-10 main content">
         <h1>Congratulation!!</h1>
+        <div>您已成功交換以下商品 : <%= item.item_name %></div>
+        <div>您的交易編號 : <%= item.trans_id %></div>
+        <div>從您的帳戶中扣除Credit : <%= item.credit %></div>
+        <div>以下為賣家聯絡方式，請勿散布或做其他非法用途</div>
+
+        <div>電話： <%= item.tel %></div>
+        <div>Email: <%= item.email %></div>
+        <div>感謝您利用Love Spreading網站交換二手物資，期待再度為您服務</div>
+
       </div>
     </div>
-    <!-- Modal -->
-<!--     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="text-center">Login</h1>
-          </div>
-          <div class="modal-body">
-            <form class="form col-md-12 center-block">
-              <div class="form-group">
-                <input type="text" class="form-control input-lg" placeholder="Email">
-              </div>
-                <div class="form-group">
-                  <input type="password" class="form-control input-lg" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-                  <span class="pull-left"><a href="#">Register</a></span>
-                </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <div class="col-md-12">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            </div>  
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- modal end -->
   </body>
 </html>
 

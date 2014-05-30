@@ -23,5 +23,12 @@
 	text-indent: -9999px;
 }
 .block{
-	border: 1px solid #ddd;
+	border: 2px solid #ddd;
+}
+.fix_block{
+	width: 300px;
+	height: 280px;
+	display: inline-block;
+	position: relative;
+	
 }

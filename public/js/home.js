@@ -1,7 +1,7 @@
 (function(){
 
-var item = '<div class="col-sm-4 block"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h3></h3><p></p></div><br><br><a class="btn btn-info more pull-right">More</a></div></div></div></div>',
-    donate = '<div class="col-sm-4 block"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h3></h3><p></p></div><br><br><a class="btn btn-info more pull-right">More</a></div></div></div></div>';
+var item = '<div class="fix_block block"><div class="thumbnail"><span class="holder"><img src="../img/mouse.png" alt="" width="150px" height="150px"></span><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h3></h3><p></p></div><br><br><a class="btn btn-info pull-right">More</a></div></div></div></div>',
+    donate = '<div class="fix_block block"><div class="thumbnail"><span class="holder"><img src="../img/chair.jpg" alt="" width="150px" height="150px"></span><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h3></h3><p></p></div><br><br><a class="btn btn-info pull-right">More</a></div></div></div></div>';
 
 var addButton       = $('#add'),
     charity_btn     = $('#charity'),   

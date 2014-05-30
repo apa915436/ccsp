@@ -70,35 +70,63 @@
           <!--Body content-->
         <% item.forEach(function(item){ %>
         <% if(item.supply_id){ %>
-          <div class="col-sm-5">
+          <div class="col-sm-4">
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
-          <div class="item_holder">supply_id：<%= item.supply_id %></div>
-          <div class="item_holder">商品名稱：<%= item.item_name %></div>
+          <div class="col-sm-4">
+          <form role="form" name="dealform" method="POST" action="/deal">
+          <div class="item_holder" name="supply_id">supply_id：<%= item.supply_id %></div>
+          <div class="item_holder">_id：<%= item._id %></div>
+          <div class="item_holder" name="item_name">商品名稱：<%= item.item_name %></div>
           <div class="item_holder">上架人：<%= item.supplier_name %></div>
           <div class="credit">單價：<%= item.credit %></div>
           <div class="credit">數量：<%= item.amount %></div>
           <div class="item_description">商品描述<br><%= item.description %></div>
-          <form role="form" name="dealform" method="POST" action="/deal">
-            <label>數量</label>
-            <input type="text" id="amount"><br>
-            <input type="radio" name="method" value="face">  面交：<%= item.face %> <br>
-            <input type="radio" name="method" value="delivery">  郵寄：<%= item.delivery %> <br>
-            <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
-          </form>
           </div>
+          <div class="col-sm-4">
+          <div class="item_holder">交換資訊</div>
+            <label>您的稱呼  </label>
+            <% if(!user){ %>
+            <input type="text" class="form-control input-md" placeholder="阿呆" id="name" name="name"><br>
+            <%} else{ %>
+            <input type="text" class="form-control input-md" id="name" name="name" value="<%= user.name%>"><br>
+            <% } %>
+            <label>數量  </label>
+            <input type="text" class="form-control input-md"  id="amount" name= "amount"><br>
+            <% if(!item.face){ %>
+            <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p><br>
+            <%} else{ %>
+            <input type="radio" name="method" value="face">  面交：<%= item.face %> <br>
+            <% } %>            
+            <% if(!item.delivery){ %>
+            <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p><br>
+            <%} else{ %>
+            <input type="radio" name="method" value="delivery">  郵寄：<%= item.delivery %> <br>
+            <% } %>
+            <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
+            <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
+          </div>
+
         <%} else{ %>
-          <div class="col-sm-5">
+          <div class="col-sm-4">
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
+          <div class="col-sm-5">
           <div class="item_holder">need_id：<%= item.need_id %></div>
+          <div class="item_holder">_id：<%= item._id %></div>
           <div class="item_holder">商品名稱：<%= item.item_name %></div>
           <div class="item_holder">上架人：<%= item.supplier_name %></div>
           <div class="credit">需求數量：<%= item.amount %></div>
           <div class="item_description">商品描述<br><%= item.description %></div>
           <p>如有意捐贈，請透過以下方式聯繫公益團體</p>
-          <div class="tel">連絡電話: <%= item.tel %></div>
-          <div class="email">電子郵件: <%= item.email %></div>
+          <% if(item.tel){ %>
+            <div class="tel">連絡電話: <%= item.tel %></div>
+            <%} else{ %>
+          <% } %>
+          <% if(item.email){ %>
+            <div class="email">電子郵件: <%= item.email %></div>
+            <%} else{ %>
+          <% } %>
         <% }}) %>
         </div>
     <!-- Modal -->
@@ -114,9 +142,10 @@
           </div>
           <div class="modal-footer">
             <div class="col-md-12">
-              <button class="btn btn-info" id="deal" type="submit">Confirm</button>
+              <button class="btn btn-info">Confirm</button>
               <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
             </div>  
+            </form>
           </div>
         </div>
       </div>

@@ -58,7 +58,7 @@ app.post('/uploadsupply', routes.uploadsupply);
 app.post('/login', routes.login);
 app.get('/item/:charity/:id',item.item);
 app.post('/deal',item.deal);
-
+// app.get('/deal_done',item.deal_done);
 
 app.get('/user', user.index);
 app.post('/user', user.create);
