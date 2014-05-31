@@ -58,6 +58,8 @@ exports.deal = function(req, res){
       	updated_at : Date.now()
       };
 
+    // User.find(id: detail.buyer_id);
+
 	new Trans(detail)
 	.save( function ( err, need, count ){
     	if( err ) return next( err );
@@ -71,14 +73,3 @@ exports.deal = function(req, res){
 				})
   	});
 }
-
-  //   	var redirect = '<html><meta http-equiv="refresh" content="1;url=/deal_done'+detail.trans_id+' " /> '
-		// var flash = '<h1>交易成功!</h1></html>';
-		// res.end(redirect+flash);
-// exports.deal_done = function(req, res){
-// 	res.render('deal_done',{
-// 		title: 'Transaction Complete'
-// 		item: detail,
-// 		user: req.session.user
-// 	});
-// }
