@@ -70,3 +70,20 @@ exports.logout = function(req, res) {
 	var flash = '<h1>成功登出!</h1></html>';
 	res.end(redirect+flash);
 };
+
+exports.profile = function(req, res) {
+	console.log(req.session);
+	// req.session.ct = req.session.ct ? req.session.ct + 1 : 1;
+	User.find({
+		id: req.seesion.user.id,
+	}, function(err, users) {
+		console.log(users);
+		if(users.length){
+			req.session.user = users[0];
+			res.redirect("/profile");
+			res.json(req.session.user);
+		}else{
+			res.json({"err"});
+		}
+	})
+};
