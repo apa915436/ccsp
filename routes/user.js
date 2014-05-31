@@ -73,17 +73,17 @@ exports.logout = function(req, res) {
 
 exports.profile = function(req, res) {
 	console.log(req.session);
+	console.log('in profile id is :',req.params.id);
 	// req.session.ct = req.session.ct ? req.session.ct + 1 : 1;
 	User.find({
-		id: req.seesion.user.id,
-	}, function(err, users) {
-		console.log(users);
-		if(users.length){
-			req.session.user = users[0];
-			res.redirect("/profile");
-			res.json(req.session.user);
-		}else{
-			res.json({"err"});
+		id: req.params.id
+	}, function(err, file) {
+		console.log(file);
+		if(file.length){
+			res.render('profile',{
+				file: file[0],
+				user: req.session.user
+			});
 		}
 	})
 };
