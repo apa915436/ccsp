@@ -55,15 +55,13 @@
 
         </div>
       <div class="col-sm-9 col-md-10 main content">
-        <h1>Congratulation!!</h1>
-        <div>您已成功交換以下商品 : <%= item.item_name %></div>
-        <div>您的交易編號 : <%= item.trans_id %></div>
-        <div>從您的帳戶中扣除Credit : <%= item.credit %></div>
-        <div>以下為賣家聯絡方式，請勿散布或做其他非法用途</div>
-
-        <div>電話： <%= item.tel %></div>
-        <div>Email: <%= item.email %></div>
-        <div>感謝您利用Love Spreading網站交換二手物資，期待再度為您服務</div>
+        <h1>User Profile</h1>
+        <div>您的ID : <%= file.id %></div>
+        <div>您的暱稱 : <%= file.name %></div>
+        <div>您的連絡電話 : <%= file.tel %></div>
+        <div>您的連絡Email : <%= file.email %></div>
+        <div>您所擁有的Credit : <%= file.credit %></div>
+        <div></div>
 
       </div>
     </div>
