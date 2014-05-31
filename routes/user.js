@@ -21,7 +21,7 @@ exports.create = function(req, res) {
 		console.log(err, user);
 		req.session.user = user;
 		if(err){
-			res.end(err);
+			res.json(err);
 		}else{
 			var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
 			var flash = '<h1>' + req.body.name + ' 成功註冊!</h1></html>';
