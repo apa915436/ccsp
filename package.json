@@ -17,11 +17,12 @@
   },
   "homepage": "https://github.com/apa915436/ccsp",
   "dependencies": {
+    "connect-flash": "*",
+    "ejs": "*",
     "express": "3.4.8",
     "express-partials": "*",
-    "ejs": "*",
     "mongoose": "*",
-    "connect-flash": "*",
+    "nodemailer": "^0.6.5",
     "passport": "*",
     "passport-facebook": "*"
   }
