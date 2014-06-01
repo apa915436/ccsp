@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var SupplySchema = new Schema({
     supply_id       : String,
-    supplier_name	: String,
-    // supplier_id     : String,
+    supplier_id     : String,
+    supplier_name   : String,
     tel				: String,
     email			: String,
     item_name		: String,
