@@ -21,7 +21,7 @@ exports.create = function(req, res) {
 		console.log(err, user);
 		req.session.user = user;
 		if(err){
-			res.end(err);
+			res.json(err);
 		}else{
 			var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
 			var flash = '<h1>' + req.body.name + ' 成功註冊!</h1></html>';
@@ -69,4 +69,21 @@ exports.logout = function(req, res) {
 	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
 	var flash = '<h1>成功登出!</h1></html>';
 	res.end(redirect+flash);
+};
+
+exports.profile = function(req, res) {
+	console.log(req.session);
+	console.log('in profile id is :',req.params.id);
+	// req.session.ct = req.session.ct ? req.session.ct + 1 : 1;
+	User.find({
+		id: req.params.id
+	}, function(err, file) {
+		console.log(file);
+		if(file.length){
+			res.render('profile',{
+				file: file[0],
+				user: req.session.user
+			});
+		}
+	})
 };

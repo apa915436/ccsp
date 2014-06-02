@@ -42,9 +42,9 @@
     </nav>
     <ul class="nav nav-tabs">
       <li class="active">
-        <a href="#" id="trade">自由交易</a>
+<!--         <a href="#" id="trade">自由交易</a>
       </li>
-      <li><a href="#" id="charity">公益特區</a></li>
+      <li><a href="#" id="charity">公益特區</a></li> -->
     </ul>
     <div class="container-fluid">
       <!--Content and sidebar-->
@@ -56,72 +56,72 @@
 
         <div class="col-sm-9 col-md-10 main content">
           <!--Body content-->
-        <% item.forEach(function(item){ %>
         <% if(item.supply_id){ %>
           <div class="col-sm-4">
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
+          
           <div class="col-sm-4">
-          <div class="item_holder">supply_id：<%= item.supply_id %></div>
-          <div class="item_holder">_id：<%= item._id %></div>
-          <div class="item_holder">商品名稱：<%= item.item_name %></div>
-          <div class="item_holder">上架人：<%= item.supplier_name %></div>
-          <div class="credit">單價：<%= item.credit %></div>
-          <div class="credit">數量：<%= item.amount %></div>
-          <div class="item_description">商品描述<br><%= item.description %></div>
+            <div class="item_holder">supply_id：<%= item.supply_id %></div>
+            <div class="item_holder">_id：<%= item._id %></div>
+            <div class="item_holder">商品名稱：<%= item.item_name %></div>
+            <div class="item_holder">上架人：<%= item.supplier_name %></div>
+            <div class="credit">單價：<%= item.credit %></div>
+            <div class="credit">數量：<%= item.amount %></div>
+            <div class="item_description">商品描述<br><%= item.description %></div>
           </div>
+          
           <div class="col-sm-4">
-          <form role="form" name="dealform" method="POST" action="/deal">
-          <div class="item_holder">交換資訊</div>
-          <input type="text" class="form-control input-md hidden"  id="supply_id" name= "supply_id" value="<%= item.supply_id %>">
-          <input type="text" class="form-control input-md hidden"  id="item_name" name= "item_name" value="<%= item.item_name %>">
-          <input type="text" class="form-control input-md hidden"  id="supplier_name" name= "supplier_name" value="<%= item.supplier_name %>">
-          <input type="text" class="form-control input-md hidden"  id="credit" name= "credit" value="<%= item.credit %>">
-            <!-- <label>您的稱呼  </label> -->
-            <% if(!user){ %>
-            <input type="text" class="form-control input-md" placeholder="阿呆" id="name" name="name"><br>
-            <%} else{ %>
-            <input type="text" class="form-control input-md hidden" id="name" name="name" value="<%= user.name%>"><br>
-            <% } %>
-            <label>數量  </label>
-            <input type="text" class="form-control input-md"  id="amount" name= "amount"><br>
-            <% if(!item.face){ %>
-            <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p><br>
-            <%} else{ %>
-            <input type="radio" name="method" value="face">  面交：<%= item.face %> <br>
-            <% } %>            
-            <% if(!item.delivery){ %>
-            <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p><br>
-            <%} else{ %>
-            <input type="radio" name="method" value="delivery">  郵寄：<%= item.delivery %> <br>
-            <% } %>
-            <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
-            <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
+            <form role="form" name="dealform" method="POST" action="/deal">
+              <div class="item_holder">交換資訊</div>
+              <input type="text" class="form-control input-md hidden"  id="supply_id" name= "supply_id" value="<%= item.supply_id %>">
+              <input type="text" class="form-control input-md hidden"  id="item_name" name= "item_name" value="<%= item.item_name %>">
+              <input type="text" class="form-control input-md hidden"  id="supplier_name" name= "supplier_name" value="<%= item.supplier_name %>">
+              <input type="text" class="form-control input-md hidden"  id="supplier_name" name= "supplier_id" value="<%= item.supplier_id %>">
+              <input type="text" class="form-control input-md hidden"  id="credit" name= "credit" value="<%= item.credit %>">
+                <% if(!user){ %>
+                <input type="text" class="form-control input-md" placeholder="阿呆" id="name" name="name"><br>
+                <%} else{ %>
+                <input type="text" class="form-control input-md hidden" id="name" name="name" value="<%= user.id%>"><br>
+                <% } %>
+                <label>數量  </label>
+                <input type="text" class="form-control input-md"  id="amount" name= "amount"><br>
+                <% if(!item.face){ %>
+                <p>&nbsp&nbsp&nbsp&nbsp面交：賣家不提供面交服務</p><br>
+                <%} else{ %>
+                <input type="radio" name="method" value="face">  面交地點：<%= item.face %> <br>
+                <% } %>            
+                <% if(!item.delivery){ %>
+                <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p><br>
+                <%} else{ %>
+                <input type="radio" name="method" value="delivery">  買家自負郵資：<%= item.delivery %> <br>
+                <% } %>
+                <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
+                <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
+            </form>
           </div>
-          </form>
 
         <%} else{ %>
           <div class="col-sm-4">
             <img class="item_img_size" src="../../img/closet.jpg">
           </div>
+          
           <div class="col-sm-5">
           <div class="item_holder">need_id：<%= item.need_id %></div>
           <div class="item_holder">_id：<%= item._id %></div>
           <div class="item_holder">商品名稱：<%= item.item_name %></div>
-          <div class="item_holder">上架人：<%= item.supplier_name %></div>
+          <div class="item_holder">上架人：<%= item.needer_name %></div>
           <div class="credit">需求數量：<%= item.amount %></div>
           <div class="item_description">商品描述<br><%= item.description %></div>
           <p>如有意捐贈，請透過以下方式聯繫公益團體</p>
           <% if(item.tel){ %>
             <div class="tel">連絡電話: <%= item.tel %></div>
-            <%} else{ %>
-          <% } %>
+            <%} else{} %>
           <% if(item.email){ %>
             <div class="email">電子郵件: <%= item.email %></div>
-            <%} else{ %>
-          <% } %>
-        <% }}) %>
-        </div>
+            <%} else{} %>
+        <% } %>
+      </div>
     <!-- Modal -->
     <div class="modal fade" id="dealModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">

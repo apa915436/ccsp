@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Love Spreading</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="../css/selfdefine.css" rel="stylesheet" media="screen">
+    <link href="../css/user.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/home.js"></script>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="home">Love Spreading</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!user){ %>
+            <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
+            <% } else { %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/profile/<%= user.id%>">Profile</a></li>
+                <li><a href="/user/logout">Logout</a></li>
+              </ul>
+            </li>
+            <% } %>
+
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#">自由交易</a>
+      </li>
+      <li><a href="charity.html">公益特區</a></li>
+    </ul>
+    <div class="container-fluid">
+      <!--Content and sidebar-->
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+
+        </div>
+      <div class="col-sm-9 col-md-10 main content">
+        <h1>User Profile</h1>
+        <div>您的ID : <%= file.id %></div>
+        <div>您的暱稱 : <%= file.name %></div>
+        <div>您的連絡電話 : <%= file.tel %></div>
+        <div>您的連絡Email : <%= file.email %></div>
+        <div>您所擁有的Credit : <%= file.credit %></div>
+        <div></div>
+
+      </div>
+    </div>
+  </body>
+</html>
+

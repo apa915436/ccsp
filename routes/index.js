@@ -129,6 +129,7 @@ exports.uploadsupply = function(req, res){
 	new Supply({
 		supply_id       : supply_index++,
 	    supplier_name	: req.body.name,
+	    supplier_id		: req.body.supplier_id,
 	    tel				: req.body.tel,
 	    email			: req.body.email,
 	    item_name		: req.body.item_name,
