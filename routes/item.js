@@ -6,6 +6,9 @@ var Trans = mongoose.model('Trans');
 var User = mongoose.model('User');
 var trans_index =0;
 
+var supplier_mail = "";
+var gmailer = require("../lib/gmailer.js");
+
 
 exports.item = function (req, res) {
  	console.log('charity or not',req.params.charity);
@@ -23,7 +26,7 @@ exports.item = function (req, res) {
 		    	console.log(item);
 				res.render('item', {
 					title: 'Love Spreading',
-					item: item[0],
+					items: item,
 					user: req.session.user,
 				})
 		    });
@@ -39,7 +42,7 @@ exports.item = function (req, res) {
 		    	console.log(item);
 		    	res.render('item', {
 					title: 'Love Spreading',
-					item: item[0],
+					items: item,
 					user: req.session.user,
 				})
 		    });       		 	
@@ -118,4 +121,41 @@ exports.deal = function(req, res){
 					user: req.session.user
 				})
     });
+
+	//拿到賣家mail
+	User.find({
+		id: req.body.supplier_id
+	}, function(err, users) {
+		supplier_mail = users[0].email;
+	})
+	
+	//買家id
+	User.find({
+		id: req.body.buyer_id
+	}, function(err, users) {
+		console.log(users);
+		if(users.length){
+			var mailOptions = {
+				from: "lovespreading2014@gmail.com", // sender address
+				to: users[0].email, // list of receivers
+				subject: "Transaction Success on Love Spreading!", // Subject line
+				html: "Congratulation!!<br>"+
+				"Your items on Love Spreading has been bought by someone else!<br><br>"+
+				"您已成功賣出以下商品 : "+detail.item_name+"<br>"+
+				"商品數量 : "+detail.amount+"<br>"+
+				"交易編號 : "+detail.trans_id+"<br>"+
+				"您得到的Credit : "+detail.credit+"<br><br>"+
+
+				"以下為買家聯絡方式，請勿散布或做其他非法用途<br>"+
+				"並請盡快聯絡買家確認出貨事宜!<br>"+
+				"姓名 : "+users.name+"<br>"+
+				"電話 : "+users.tel+"<br>"+
+				"Email : "+users.email+"<br>"+
+				"感謝您利用Love Spreading網站交換二手物資，期待再度為您服務" // html body
+			}
+			gmailer.sendGmail(mailOptions);
+		}
+	})
+
+
 }
