@@ -1,52 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Love Spreading</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="../css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="../css/selfdefine.css" rel="stylesheet" media="screen">
-    <link href="../css/user.css" rel="stylesheet" media="screen">
-    <!-- <link href="../css/flat-ui.css" rel="stylesheet" media="screen"> -->
-  </head>
+<% include header.ejs %>
   <body> 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="home">Love Spreading</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="home">物品瀏覽</a></li>
-            <li><a href="upload">物品捐贈</a></li>
-            <% if(!user){ %>
-            <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
-            <% } else { %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="/profile/<%= user.id%>">Profile</a></li>
-                <li><a href="/user/logout">Logout</a></li>
-              </ul>
-            </li>
-            <% } %>
-            
-            <li><a href="#">Help</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs black">
       <li class="active">
-        <a href="#" id="trade">自由交易</a>
+        <a class="fui-user" href="#" id="trade"> 自由交易</a>
       </li>
-      <li><a href="#" id="charity">公益特區</a></li>
+      <li><a class="fui-heart" href="#" id="charity"> 公益特區</a></li>
     </ul>
     <div class="container-fluid">
       <!--Content and sidebar-->
@@ -55,7 +15,6 @@
           <br>
           <!--Sidebar content-->
           <ul class="nav nav-sidebar">
-            <br>
             <li><a href="#" id="latest">最新</a></li>
             <li><a href="#" id="cloth">衣物</a></li>
             <li><a href="#" id="house">家電</a></li>
@@ -70,10 +29,7 @@
         <div class="col-sm-9 col-md-10 main content">
 
           <div class="row-fluid">
-          <button class="btn btn-info" id="add">&#10010;</button>
-
           <ul class="modify">
-
           </ul>
         </div>
       </div>
@@ -151,30 +107,7 @@
       </div>
     </div>
 
-  
-
-
     <!-- Prompt login dialog modal end -->
-    <!-- Dange Modal -->
-    <div class="modal fade" id="dealModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="text-center">Danger</h1>
-          </div>
-          <div class="modal-body">
-            <p>It will cost you credits.</p>
-            <p>Are you sure to exchange this item?</p>
-          </div>
-          <div class="modal-footer">
-            <div class="col-md-12">
-              <button class="btn btn-info"><a href="deal.html">Confirm</a></button>
-              <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-            </div>  
-          </div>
-        </div>
-      </div>
-    </div>
 
 
     <style>
@@ -189,7 +122,7 @@
     }
     </style>
     <div class="treasure" data-toggle="modal" data-target="#CreditModal">
-      <h4>聚寶盆</h4>
+      <h6>聚寶盆</h6>
       <span>credit : <%= credit%></span>
     </div>
 
