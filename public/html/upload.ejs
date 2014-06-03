@@ -2,44 +2,6 @@
 <html>
 <% include header.ejs %>
   <body>
-<<<<<<< HEAD
-    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/upload.js"></script>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="home">Love Spreading</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="home">物品瀏覽</a></li>
-            <li><a href="upload">物品捐贈</a></li>
-            <% if(!user){ %>
-              <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
-            <% } else { %>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="/profile/<%= user.id%>">Profile</a></li>
-                <li><a href="/user/logout">Logout</a></li>
-              </ul>
-            </li>
-            <% } %>
-            <li><a href="#">Help</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-=======
->>>>>>> 6067705f4bb16d5011555bdfe476d31314b788a6
     <div class="container-fluid">
       <!--Content and sidebar-->
       <div class="row row-offcanvas row-offcanvas-left">
@@ -123,10 +85,17 @@
                         <div class="form-group col-md-12 pull-left">
                           <label>照片上傳</label>
                           <br>
-                          <input type="filepicker" name="pic_upload" data-fp-apikey="ALqo9MHDSSelO7bDcIV2Az" data-fp-button-text="請選擇檔案" data-fp-mimetype="image/*"/>
+                          <!-- <input type="filepicker" name="pic_upload" data-fp-apikey="ALqo9MHDSSelO7bDcIV2Az" data-fp-button-text="請選擇檔案" data-fp-mimetype="image/*"/> -->
+                          <button id="pickfile" type="button" />請選擇檔案</button>
+
+                          <img style="max-width:200px;" id="empty" alt="empty">
+
+                          <input id="imgurl" type="hidden" name="imgurl">
+
                           <!--<input type="file" accept="image/*" name="pic_upload" id="pic_upload" placeholder="上傳照片" class="col-md-6 inline-block">
                           <!-- <button class="btn col-md-2" type="submit">上傳檔案</button> -->
                         </div>
+                        <div class="clearfix"></div>
                         <div class="form-group">
                           <br>
                           <textarea type="text" class="form-control input-md" rows="5" placeholder="有關物資、運送等其他說明"></textarea>
@@ -143,5 +112,10 @@
         </div>
       </div>
     </div>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/upload.js"></script>
+
   </body>
 </html>
