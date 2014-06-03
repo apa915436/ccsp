@@ -6,6 +6,7 @@
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="../../css/selfdefine.css" rel="stylesheet" media="screen">
+    <link href="../../css/flat-ui.css" rel="stylesheet" media="screen">
     <link href="../../css/user.css" rel="stylesheet" media="screen">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -83,14 +84,14 @@
                 <input type="text" class="form-control input-md hidden" id="name" name="name" value="<%= user.id%>"><br>
                 <% } %>
                 <label>數量  </label>
-                <input type="text" class="form-control input-md"  id="amount" name= "amount"><br>
+                <input type="text" class="form-control input-md"  id="amount" name= "amount">
                 <% if(!item.face){ %>
-                <p>&nbsp&nbsp&nbsp&nbsp面交：賣家不提供面交服務</p><br>
+                <p>&nbsp&nbsp&nbsp&nbsp面交：賣家不提供面交服務</p>
                 <%} else{ %>
-                <input type="radio" name="method" value="face">  面交地點：<%= item.face %> <br>
+                <input type="radio" name="method" value="face">  面交地點：<%= item.face %> 
                 <% } %>            
                 <% if(!item.delivery){ %>
-                <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p><br>
+                <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p>
                 <%} else{ %>
                 <input type="radio" name="method" value="delivery">  買家自負郵資：<%= item.delivery %> <br>
                 <% } %>

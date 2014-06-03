@@ -70,39 +70,39 @@
                         <div class="form-group col-md-12">
                           <label>送貨方式</label>
                           <div class="row-fluid">
-                            <label class="checkbox col-md-6">
-                              <input type="checkbox" id="Checkbox1" value="face" name="Checkbox1">面交
-                              <input type="text" class="col-md-12 input-md" placeholder="請填寫願意面交的地點" name="face_location">
-                            </label>
                             <div class="col-md-6">
-                              <label class="checkbox">
-                                <input type="checkbox" id="Checkbox2" value="delivery" name="Checkbox2">郵寄
-                                <input type="text" class="col-md-12 input-md" placeholder="請填寫對方需負擔的郵資" name="delivery_cost">
-                              </label>                              
+                            <label>
+                              <input type="checkbox" id="Checkbox1" value="face" name="Checkbox1"> &nbsp;&nbsp;面交
+                              <input type="text" class="col-md-3 form-control input-md" placeholder="請填寫願意面交的地點" name="face_location">
+                            </label>
                             </div>
-                          </div>
+                            <div class="col-md-6">
+                              <label class>
+                                <input type="checkbox" id="Checkbox2" value="delivery" name="Checkbox2"> &nbsp;&nbsp;郵寄
+                                <input type="text" class="col-md-3 form-control input-md" placeholder="請填寫對方需負擔的郵資" name="delivery_cost">
+                              </label>        
+                              </div>
+                            </div>
+                          
                         </div>
                         <div class="form-group col-md-12 pull-left">
                           <label>照片上傳</label>
                           <br>
-                          <!-- <input type="filepicker" name="pic_upload" data-fp-apikey="ALqo9MHDSSelO7bDcIV2Az" data-fp-button-text="請選擇檔案" data-fp-mimetype="image/*"/> -->
-                          <button id="pickfile" type="button" />請選擇檔案</button>
+                          <button class="btn" id="pickfile" type="button" />請選擇檔案</button>
 
                           <img style="max-width:200px;" id="empty" alt="empty">
 
                           <input id="imgurl" type="hidden" name="imgurl">
 
-                          <!--<input type="file" accept="image/*" name="pic_upload" id="pic_upload" placeholder="上傳照片" class="col-md-6 inline-block">
-                          <!-- <button class="btn col-md-2" type="submit">上傳檔案</button> -->
                         </div>
                         <div class="clearfix"></div>
                         <div class="form-group">
                           <br>
-                          <textarea type="text" class="form-control input-md" rows="5" placeholder="有關物資、運送等其他說明"></textarea>
+                          <textarea type="text" class="form-control input-md" rows="4" placeholder="有關物資、運送等其他說明"></textarea>
                         </div>
 
                         <div>
-                          <button class="btn btn-primary btn-lg btn-block" id="upload" type="submit">送出</button>
+                          <button class="btn btn-primary btn-lg btn-block" id="upload" type="submit">上傳物資</button>
                           <span class="pull-right"><a href="#">上傳說明</a></span>
                         </div>
                       </form>
