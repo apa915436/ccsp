@@ -1,6 +1,6 @@
 (function(){
 
-var item = '<div class="fix_block thumbnail"><img src="../img/mouse.png" alt="" width="140px" height="140px"><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h6></h6><p></p></div><br><a class="btn btn-info down pull-right">More</a></div></div>',
+var item = '<div class="fix_block thumbnail"><img width="140px" height="140px"><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h6></h6><p></p></div><br><a class="btn btn-info down pull-right">More</a></div></div>',
     donate = '<div class="col-sm-4 thumbnail"><img src="../img/chair.jpg" alt="" width="140px" height="140px"><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h6></h6><p></p></div><br><a class="btn btn-info down pull-right">More</a></div></div></div>&nbsp&nbsp';
 
 var addButton       = $('#add'),
@@ -52,6 +52,7 @@ function load(cat, bind){
             console.log('item id',items[i].supply_id);
             a.find('h6').text('商品名稱: '+items[i].item_name);
             a.find('p').text('Credit: '+items[i].credit);
+            a.find('img').attr('src',items[i].image);
             a.find('a').attr('data-id', items[i].supply_id);
             a.find('a').attr('href', href);
         }
@@ -74,6 +75,7 @@ function need(cat,bind){
             var href = '/item/'+bool_charity+'/'+items[i].need_id;
             // console.log('item id',items[i]._id);
             a.find('h6').text('商品名稱: '+items[i].item_name);
+            a.find('img').attr('src',items[i].image);
             a.find('p').text('需求數量: '+items[i].amount);
             a.find('a').attr('data-id', items[i].need_id);
             a.find('a').attr('href', href);

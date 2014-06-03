@@ -137,7 +137,7 @@ exports.uploadsupply = function(req, res){
 	else{
 		delivery = false;
 	}
-	var image = req.body.imgurl + "/convert?width=200&height=100&fit=crop"
+	var image = req.body.imgurl + "/convert?width=140&height=140&fit=crop"
 	console.log(req.body.catogory);
 	new Supply({
 		supply_id       : supply_index++,
