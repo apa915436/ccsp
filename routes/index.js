@@ -2,6 +2,7 @@ var mongoose = require( 'mongoose' );
 var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
 var Need   = mongoose.model('Need');
+var Setting   = mongoose.model('Setting');
 var need_index = 0;
 var supply_index = 0;
 
@@ -15,10 +16,19 @@ exports.index = function(req, res) {
 
 exports.home = function(req, res) {
 	console.log("user session check: " + req.session.user);
-	res.render('home', {
-		title: 'Love Spreading',
-		user: req.session.user
-	});
+	
+	Setting.findOne({name:"credit"}).exec(function(err, credit){
+		console.log(err, credit);
+	
+		res.render('home', {
+			title: 'Love Spreading',
+			user: req.session.user,
+			credit: credit.value
+		});
+
+		console.log("user credit:" +req.session.user.credit);
+
+	})
 }
 
 exports.supply = function(req, res) {
