@@ -50,7 +50,7 @@ function load(cat, bind){
             var a = $(item).appendTo(flag);
             var href = '/item/'+bool_charity+'/'+items[i].supply_id;
             console.log('item id',items[i].supply_id);
-            a.find('h6').text('商品名稱: '+items[i].item_name);
+            a.find('h6').text(items[i].item_name);
             a.find('p').text('Credit: '+items[i].credit);
             a.find('img').attr('src',items[i].image);
             a.find('a').attr('data-id', items[i].supply_id);
@@ -74,7 +74,7 @@ function need(cat,bind){
             var a = $(donate).appendTo(flag);
             var href = '/item/'+bool_charity+'/'+items[i].need_id;
             // console.log('item id',items[i]._id);
-            a.find('h6').text('商品名稱: '+items[i].item_name);
+            a.find('h6').text(items[i].item_name);
             a.find('img').attr('src',items[i].image);
             a.find('p').text('需求數量: '+items[i].amount);
             a.find('a').attr('data-id', items[i].need_id);

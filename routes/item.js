@@ -82,10 +82,7 @@ exports.deal = function(req, res){
 			    var buyer_credit_after = buyer.credit - detail.credit;
 			    console.log('buyer credit after', buyer_credit_after);
 			    buyer.credit = buyer_credit_after;
-			    buyer.save( function(err, buyer, count){
-			    	if( err ) return next( err );
-			    	// console.log(buyer.credit);
-			    })
+			    buyer.save( {});
 		    });
 
 	User.
@@ -101,11 +98,7 @@ exports.deal = function(req, res){
 			    var seller_credit_after = seller.credit + detail.credit;
 			    console.log('seller credit after', seller_credit_after);
    			    seller.credit = seller_credit_after;
-			    seller.save( function(err, seller, count){
-			    	if( err ) return next( err );
-			    	// console.log(seller.credit);
-			    })
-
+			    seller.save({});
 		    }); 
 	
 	new Trans(detail)
