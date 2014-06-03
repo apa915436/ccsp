@@ -82,22 +82,6 @@ function need(cat,bind){
     });
 };
 
-// function more(charity, id){
-//     console.log('in more', id);
-//     $.getJSON(
-//         '/item/'+charity+'/'+id,
-//     {},
-//     function(item){
-//         console.log('more get',item);
-//         $(flag).empty();
-//         var a = $(detail).appendTo(flag);
-//         a.find('h3').text(item.item_name);
-//         a.find('h4').text('credit:' + item.credit);
-//         a.find('p').text('Descripttion:' + item.description);
-//     }
-//     );
-// };
-
 function moreListener(){       
     $('.more').click(function(){
         // console.log('more button click');

@@ -155,6 +155,18 @@ exports.deal = function(req, res){
 			}
 			gmailer.sendGmail(mailOptions);
 		}
+		console.log('mail sent successfully!!');
+	})
+
+	Supply.find({
+		supply_id: detail.supply_id
+	},function(err, item) {
+		console.log(item);
+		if(item.length){
+			item[0].remove({});
+		}
+		console.log(detail.supply_id+'has been removed');
+
 	})
 
 

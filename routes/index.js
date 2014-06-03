@@ -26,7 +26,7 @@ exports.home = function(req, res) {
 			credit: credit.value
 		});
 
-		console.log("user credit:" +req.session.user.credit);
+		// console.log("user credit:" +req.session.user.credit);
 
 	})
 }
@@ -139,6 +139,7 @@ exports.uploadsupply = function(req, res){
 	else{
 		delivery = false;
 	}
+	console.log(req.body.catogory);
 	new Supply({
 		supply_id       : supply_index++,
 	    supplier_name	: req.body.name,
