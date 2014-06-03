@@ -7,7 +7,7 @@ var User = mongoose.model('User');
 var promise = require('promise');
 var trans_index =0;
 
-var supplier_mail = "";
+// var supplier_mail = "";
 var gmailer = require("../lib/gmailer.js");
 
 
@@ -51,9 +51,9 @@ exports.item = function (req, res) {
 }
 
 exports.deal = function(req, res){
-	console.log(req.body);
-	console.log("user session check: " + req.session.user);
-	console.log('trans_id before save', trans_index);
+	// console.log(req.body);
+	// console.log("user session check: " + req.session.user);
+	// console.log('trans_id before save', trans_index);
 	var detail = {
 		trans_id   		: trans_index++,	
 		supply_id  		: req.body.supply_id,
@@ -76,7 +76,7 @@ exports.deal = function(req, res){
 		    	if(err){
 		      		console.error(err);
 		    	};
-		    	console.log(user1);
+		    	// console.log(user1);
 		    	buyer = user1[0];
 			    var buyer_credit_before = buyer.credit;
 			    console.log('buyer credit before', buyer.credit);
@@ -85,7 +85,7 @@ exports.deal = function(req, res){
 			    buyer.credit = buyer_credit_after;
 			    buyer.save( function(err, buyer, count){
 			    	if( err ) return next( err );
-			    	console.log(buyer.credit);
+			    	// console.log(buyer.credit);
 			    })
 		    });
 
@@ -95,7 +95,7 @@ exports.deal = function(req, res){
 		    	if(err){
 		      		console.error(err);
 		    	};
-		    	console.log(user2);
+		    	// console.log(user2);
 		    	seller = user2[0];
 			    var seller_credit_before = seller.credit;
 			    console.log('seller credit before', seller.credit);
@@ -104,7 +104,7 @@ exports.deal = function(req, res){
    			    seller.credit = seller_credit_after;
 			    seller.save( function(err, seller, count){
 			    	if( err ) return next( err );
-			    	console.log(seller.credit);
+			    	// console.log(seller.credit);
 			    })
 
 		    }); 
@@ -114,7 +114,7 @@ exports.deal = function(req, res){
     	if( err ) return next( err );
     	console.log('transaction successfully');
     	console.log('item trans_id',detail.trans_id);
-    	console.log(detail);
+    	// console.log(detail);
     	res.render('deal_done', {
 					title: 'Love Spreading',
 					user: seller,
@@ -123,19 +123,21 @@ exports.deal = function(req, res){
 				})
     });
 
-	//拿到賣家mail
+	//寄信給賣家
 	User.find({
 		id: req.body.supplier_id
 	}, function(err, users) {
-		supplier_mail = users[0].email;
-	})
-	
-	//買家id
-	User.find({
-		id: req.body.buyer_id
-	}, function(err, users) {
 		console.log(users);
 		if(users.length){
+			//賣家mail
+			var supplier_mail="";
+			User.find({
+				id: req.body.supplier_id
+			}, function(err, users) {
+				supplier_mail = users[0].email;
+			})
+			// console.log('supplier_mail'+ supplier_mail);
+
 			var mailOptions = {
 				from: "lovespreading2014@gmail.com", // sender address
 				to: users[0].email, // list of receivers
@@ -149,11 +151,13 @@ exports.deal = function(req, res){
 
 				"以下為買家聯絡方式，請勿散布或做其他非法用途<br>"+
 				"並請盡快聯絡買家確認出貨事宜!<br>"+
-				"姓名 : "+users.name+"<br>"+
-				"電話 : "+users.tel+"<br>"+
-				"Email : "+users.email+"<br>"+
+				"姓名 : "+users[0].name+"<br>"+
+				"電話 : "+users[0].tel+"<br>"+
+				"Email : "+users[0].email+"<br>"+
 				"感謝您利用Love Spreading網站交換二手物資，期待再度為您服務" // html body
 			}
+
+			console.log('mailOptions:'+ mailOptions);
 			gmailer.sendGmail(mailOptions);
 		}
 	})
