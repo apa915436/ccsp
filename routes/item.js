@@ -27,7 +27,7 @@ exports.item = function (req, res) {
 		    	console.log(item);
 				res.render('item', {
 					title: 'Love Spreading',
-					item: item[0],
+					items: item,
 					user: req.session.user,
 				})
 		    });
@@ -43,7 +43,7 @@ exports.item = function (req, res) {
 		    	console.log(item);
 		    	res.render('item', {
 					title: 'Love Spreading',
-					item: item[0],
+					items: item,
 					user: req.session.user,
 				})
 		    });       		 	
