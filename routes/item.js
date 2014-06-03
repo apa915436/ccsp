@@ -162,10 +162,18 @@ exports.deal = function(req, res){
 		supply_id: detail.supply_id
 	},function(err, item) {
 		console.log(item);
-		if(item.length){
-			item[0].remove({});
+		var remain = item[0].amount - detail.amount;
+		if(remain>0){
+			item[0].amount = remain;
+			item[0].save( function(err, seller, count){
+			    	if( err ) return next( err );
+			    	console.log("amount now is" +item[0].amount);
+			    });
 		}
-		console.log(detail.supply_id+'has been removed');
+		else{
+			item[0].remove({});
+			console.log(detail.supply_id+'has been removed');
+		}
 
 	})
 
