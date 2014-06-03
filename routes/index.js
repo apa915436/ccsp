@@ -137,6 +137,7 @@ exports.uploadsupply = function(req, res){
 	else{
 		delivery = false;
 	}
+	var image = req.body.imgurl + "/convert?width=200&height=100&fit=crop"
 	console.log(req.body.catogory);
 	new Supply({
 		supply_id       : supply_index++,
@@ -150,6 +151,7 @@ exports.uploadsupply = function(req, res){
 	    credit	   		: req.body.credit,
 	    face       		: face,
 	    delivery   		: delivery,
+	    image			: image,
       	updated_at 		: Date.now()
   	}).save( function ( err, need, count ){
     	if( err ) return next( err );

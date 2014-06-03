@@ -14,6 +14,7 @@ var SupplySchema = new Schema({
     credit	   		: Number,
     face       		: String,
     delivery   		: String,
+    image           : String,
     updated_at 		: Date
 });
 
