@@ -25,6 +25,7 @@ exports.home = function(req, res) {
 			user: req.session.user,
 			credit: credit.value
 		});
+
 	})
 }
 
@@ -136,6 +137,7 @@ exports.uploadsupply = function(req, res){
 	else{
 		delivery = false;
 	}
+	console.log(req.body.catogory);
 	new Supply({
 		supply_id       : supply_index++,
 	    supplier_name	: req.body.name,

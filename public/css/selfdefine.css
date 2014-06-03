@@ -85,10 +85,12 @@ footer {
   margin-right: -15px;
   margin-bottom: 20px;
   margin-left: -15px;
+  text-decoration: blink;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color : blue;
 }
 .nav-sidebar > .active > a {
   color: #fff;

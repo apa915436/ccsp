@@ -4,7 +4,6 @@ var Supply   = mongoose.model('Supply');
 var Need   = mongoose.model('Need');
 var Trans = mongoose.model('Trans');
 var User = mongoose.model('User');
-var promise = require('promise');
 var trans_index =0;
 
 // var supplier_mail = "";
@@ -160,6 +159,26 @@ exports.deal = function(req, res){
 			console.log('mailOptions:'+ mailOptions);
 			gmailer.sendGmail(mailOptions);
 		}
+		console.log('mail sent successfully!!');
+	})
+
+	Supply.find({
+		supply_id: detail.supply_id
+	},function(err, item) {
+		console.log(item);
+		var remain = item[0].amount - detail.amount;
+		if(remain>0){
+			item[0].amount = remain;
+			item[0].save( function(err, seller, count){
+			    	if( err ) return next( err );
+			    	console.log("amount now is" +item[0].amount);
+			    });
+		}
+		else{
+			item[0].remove({});
+			console.log(detail.supply_id+'has been removed');
+		}
+
 	})
 
 
