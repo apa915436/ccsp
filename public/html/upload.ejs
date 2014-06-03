@@ -9,6 +9,7 @@
     <link href="../css/user.css" rel="stylesheet" media="screen">
   </head>
   <body>
+    <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/upload.js"></script>
@@ -126,7 +127,8 @@
                         <div class="form-group col-md-12 pull-left">
                           <label>照片上傳</label>
                           <br>
-                          <input type="file" accept="image/*" name="pic_upload" id="pic_upload" placeholder="上傳照片" class="col-md-6 inline-block">
+                          <input type="filepicker" name="pic_upload" data-fp-apikey="ALqo9MHDSSelO7bDcIV2Az" data-fp-button-text="請選擇檔案" data-fp-mimetype="image/*"/>
+                          <!--<input type="file" accept="image/*" name="pic_upload" id="pic_upload" placeholder="上傳照片" class="col-md-6 inline-block">
                           <!-- <button class="btn col-md-2" type="submit">上傳檔案</button> -->
                         </div>
                         <div class="form-group">
