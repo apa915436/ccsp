@@ -53,6 +53,7 @@
           <br>
 
         </div>
+        <form role="form" name="dealform" method="POST" action="/deal">
 
         <div class="col-sm-9 col-md-10 main content">
           <!--Body content-->
@@ -72,7 +73,6 @@
           </div>
           
           <div class="col-sm-4">
-            <form role="form" name="dealform" method="POST" action="/deal">
               <div class="item_holder">交換資訊</div>
               <input type="text" class="form-control input-md hidden"  id="supply_id" name= "supply_id" value="<%= item.supply_id %>">
               <input type="text" class="form-control input-md hidden"  id="item_name" name= "item_name" value="<%= item.item_name %>">
@@ -97,9 +97,9 @@
                 <input type="radio" name="method" value="delivery">  買家自負郵資：<%= item.delivery %> <br>
                 <% } %>
                 <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
-                <button class="btn buy_btn" data-toggle="modal" data-target="#dealModal">我要交換</button>
-            </form>
+                <button class="btn buy_btn"  type="submit" onclick="return(confirm("are you sure?"))">我要交換</button>
           </div>
+        </form>
 
         <%} else{ %>
           <div class="col-sm-4">

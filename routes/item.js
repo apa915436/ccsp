@@ -4,7 +4,6 @@ var Supply   = mongoose.model('Supply');
 var Need   = mongoose.model('Need');
 var Trans = mongoose.model('Trans');
 var User = mongoose.model('User');
-var promise = require('promise');
 var trans_index =0;
 
 
