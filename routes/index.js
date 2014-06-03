@@ -81,6 +81,9 @@ exports.create = function ( req, res){
   	// console.log(req.body.name);
   	new Supply({
   		supply_id  : supply_index++,
+  		supplier_id: 'andy',
+  		amount	   : 5,
+  		credit     : 39,
       	item_name  : req.body.item_name, 
       	catogory   : req.body.catogory,
       	updated_at : Date.now()
