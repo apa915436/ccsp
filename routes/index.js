@@ -26,8 +26,6 @@ exports.home = function(req, res) {
 			credit: credit.value
 		});
 
-		// console.log("user credit:" +req.session.user.credit);
-
 	})
 }
 
