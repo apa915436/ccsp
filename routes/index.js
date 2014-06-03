@@ -25,9 +25,6 @@ exports.home = function(req, res) {
 			user: req.session.user,
 			credit: credit.value
 		});
-
-		console.log("user credit:" +req.session.user.credit);
-
 	})
 }
 
