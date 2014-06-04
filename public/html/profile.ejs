@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="../../css/selfdefine.css" rel="stylesheet" media="screen">
     <link href="../../css/flat-ui.css" rel="stylesheet" media="screen">
+    <link href="../../css/selfdefine.css" rel="stylesheet" media="screen">
     <link href="../../css/user.css" rel="stylesheet" media="screen">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- <link href="../css/flat-ui.css" rel="stylesheet" media="screen"> -->
+    <nav class="navbar navbar-top navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,20 +18,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://love-spreading.herokuapp.com/home">Love Spreading</a>
+          <a href="home"><img src="../../img/text3.png" height="50px"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://127.0.0.1:3000/home">物品瀏覽</a></li>
-            <li><a href="http://127.0.0.1:3000/upload">物品捐贈</a></li>
+            <li><a href="home">物品瀏覽</a></li>
+            <li><a href="upload">物品捐贈</a></li>
             <% if(!user){ %>
             <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
             <% } else { %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="http://127.0.0.1:3000/profile/<%= user.id%>">Profile</a></li>
-                <li><a href="http://127.0.0.1:3000/user/logout">Logout</a></li>
+                <li><a href="/profile/<%= user.id%>">Profile</a></li>
+                <li><a href="/user/logout">Logout</a></li>
               </ul>
             </li>
             <% } %>
@@ -40,7 +41,6 @@
         </div>
       </div>
     </nav>
-
   </head>
   <body>
 
