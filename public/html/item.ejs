@@ -21,16 +21,16 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://127.0.0.1:3000/home">物品瀏覽</a></li>
-            <li><a href="http://127.0.0.1:3000/upload">物品捐贈</a></li>
+            <li><a href="/home">物品瀏覽</a></li>
+            <li><a href="/upload">物品捐贈</a></li>
             <% if(!user){ %>
             <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
             <% } else { %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="http://127.0.0.1:3000/profile/<%= user.id%>">Profile</a></li>
-                <li><a href="http://127.0.0.1:3000/user/logout">Logout</a></li>
+                <li><a href="/profile/<%= user.id%>">Profile</a></li>
+                <li><a href="/user/logout">Logout</a></li>
               </ul>
             </li>
             <% } %>
@@ -47,13 +47,8 @@
     <div class="container-fluid">
       <!--Content and sidebar-->
       <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-          <br>
-
-        </div>
         <form role="form" name="dealform" method="POST" action="/deal">
-
-        <div class="col-sm-9 col-md-10 main content">
+        <div class="col-sm-12 col-md-10 main content">
           <!--Body content-->
         <% items.forEach( function ( item ){ %>
         <% if(item.supply_id){ %>
@@ -62,10 +57,8 @@
           </div>
           
           <div class="col-sm-4">
-            <div class="item_holder">supply_id：<%= item.supply_id %></div>
-            <div class="item_holder">_id：<%= item._id %></div>
-            <div class="item_holder"><%= item.item_name %></div>
-            <div class="item_holder"><%= item.supplier_name %></div>
+            <div class="item_holder">商品名稱：<%= item.item_name %></div>
+            <div class="item_holder">提供者：<%= item.supplier_name %></div>
             <div class="credit">單價：<%= item.credit %></div>
             <div class="credit">數量：<%= item.amount %></div>
             <div class="item_description">商品描述<br><%= item.description %></div>
