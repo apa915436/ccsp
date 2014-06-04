@@ -1,7 +1,7 @@
 (function(){
 
 var item = '<div class="fix_block thumbnail"><img width="140px" height="140px"><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h6></h6><p></p></div><br><a class="btn btn-info down pull-right">More</a></div></div>',
-    donate = '<div class="col-sm-4 thumbnail"><img src="../img/chair.jpg" alt="" width="140px" height="140px"><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h6></h6><p></p></div><br><a class="btn btn-info down pull-right">More</a></div></div></div>&nbsp&nbsp';
+    donate = '<div class="fix_block thumbnail"><img width="140px" height="140px"><div class="caption"><div class="row-fliud"><div class="col-sm-8"><h6></h6><p></p></div><br><a class="btn btn-info down pull-right">More</a></div></div>';
 
 var addButton       = $('#add'),
     charity_btn     = $('#charity'),   

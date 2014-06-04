@@ -89,12 +89,12 @@
                 <p>&nbsp&nbsp&nbsp&nbsp面交：賣家不提供面交服務</p>
                 <%} else{ %>
                 <input type="radio" name="method" value="face">  面交地點：<%= item.face %> 
-                <% } %>            
+                <% } %><br>            
                 <% if(!item.delivery){ %>
                 <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p>
                 <%} else{ %>
                 <input type="radio" name="method" value="delivery">  買家自負郵資：<%= item.delivery %> <br>
-                <% } %>
+                <% } %><br>
                 <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
                 <button class="btn buy_btn"  type="submit" onclick="return(confirm("are you sure?"))">我要交換</button>
           </div>

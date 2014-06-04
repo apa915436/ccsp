@@ -88,13 +88,13 @@ exports.need = function(req, res) {
 exports.create = function ( req, res){
   	// console.log(req.body.name);
   	new Supply({
-  		supply_id  : supply_index++,
-  		supplier_id: 'andy',
-  		amount	   : 5,
-  		credit     : 39,
-      	item_name  : req.body.item_name, 
-      	catogory   : req.body.catogory,
-      	updated_at : Date.now()
+	  		supply_id  : supply_index++,
+	  		supplier_id: 'andy',
+	  		amount	   : 5,
+	  		credit     : 39,
+	      	item_name  : req.body.item_name, 
+	      	catogory   : req.body.catogory,
+	      	updated_at : Date.now()
   	}).save( function ( err, need, count ){
     	if( err ) return next( err );
     	console.log('insert supply successed');

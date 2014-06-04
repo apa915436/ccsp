@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
-// mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/test');
 
-mongoose.connect('mongodb://localhost/test');
+// mongoose.connect('mongodb://localhost/test');
 
 // Error handler
 mongoose.connection.on('error', function(err) {
