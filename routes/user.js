@@ -27,7 +27,7 @@ exports.create = function(req, res) {
 		if (err) {
 			res.json(err);
 		} else {
-			var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+			var redirect = '<html><meta http-equiv="refresh" content="1;url=/home" />'
 			var flash = '<h1>' + req.body.name + ' 成功註冊!</h1></html>';
 			res.end(redirect + flash);
 		}
@@ -72,7 +72,7 @@ exports.login = function(req, res) {
 
 exports.logout = function(req, res) {
 	delete req.session["user"];
-	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+	var redirect = '<html><meta http-equiv="refresh" content="1;url=/home" />'
 	var flash = '<h1>成功登出!</h1></html>';
 	res.end(redirect + flash);
 };
@@ -126,7 +126,7 @@ exports.donate = function(req, res) {
 			req.session.user.credit = users.credit;
 			users.save();
 
-			var redirect = '<html><meta http-equiv="refresh" content="2;url=/home" />'
+			var redirect = '<html><meta http-equiv="refresh" content="1;url=/home" />'
 			var flash = '<h1>Donation success!</h1></html>';
 			res.end(redirect + flash);
 		})
