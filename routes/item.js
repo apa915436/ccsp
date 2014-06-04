@@ -109,7 +109,7 @@ exports.deal = function(req, res){
     	// console.log(detail);
     	res.render('deal_done', {
 					title: 'Love Spreading',
-					user: seller,
+					seller: seller,
 					item: detail,
 					user: req.session.user
 				})
@@ -117,7 +117,7 @@ exports.deal = function(req, res){
 
 	//寄信給賣家
 	User.find({
-		id: req.body.supplier_id
+		id: req.body.name
 	}, function(err, users) {
 		console.log(users);
 		if(users.length){
@@ -171,8 +171,12 @@ exports.deal = function(req, res){
 			item[0].remove({});
 			console.log(detail.supply_id+'has been removed');
 		}
-
 	})
-
-
 }
+
+exports.destroy = function ( req, res, next ){
+  Supply.findById( req.params.id, function ( err, supply ){
+    supply.remove({})
+    res.redirect( '/profile/'+req.session.user );
+  });
+};

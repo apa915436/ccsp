@@ -154,7 +154,7 @@
               <td><%= item.amount %></td>
               <td><%= item.credit %></td>
               <td><span class="glyphicon glyphicon-pencil"></td>
-              <td><span class="glyphicon glyphicon-trash"></td>
+              <td><a href="/destroy/<%= item._id %>" class="glyphicon glyphicon-trash"></a>  </td>
             </tr>
           <% }) %>
         </tbody>

@@ -85,7 +85,7 @@ exports.profile = function(req, res) {
 	User.find({
 		id: req.params.id
 	}, function(err, file) {
-
+		console.log(file);
 		Supply.find({
 			supplier_id: req.params.id
 		}, function(err, items) {
@@ -93,12 +93,21 @@ exports.profile = function(req, res) {
 				console.log('items', items);
 				console.log('file',file);
 				if (file.length) {
+					console.log('if');
 					res.render('profile', {
 						file: file[0],
 						items: items,
 						user: req.session.user
 					});
 				}
+			}
+			else{
+				console.log('else');
+					res.render('profile', {
+						file: file[0],
+						items: items,
+						user: req.session.user
+					});
 			}
 		})
 	});
