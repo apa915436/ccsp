@@ -53,43 +53,90 @@
         <% items.forEach( function ( item ){ %>
         <% if(item.supply_id){ %>
           <div class="col-sm-4">
-            <img class="item_img_size" src="<%= item.image %>">
+            <img class="item_img_size block" src="<%= item.image %>">
           </div>
-          
+          <br>
+          <br>
           <div class="col-sm-4">
-            <div class="item_holder">商品名稱：<%= item.item_name %></div>
-            <div class="item_holder">提供者：<%= item.supplier_name %></div>
-            <div class="credit">單價：<%= item.credit %></div>
-            <div class="credit">數量：<%= item.amount %></div>
+            <h5>商品資訊</h5>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>商品名稱</td>
+                  <td><%= item.item_name %></td>
+                </tr>
+                <tr>
+                  <td>提供者</td>
+                  <td><%= item.supplier_name %></td>
+                </tr>
+                <tr>
+                  <td>單價</td>
+                  <td><%= item.credit %></td>
+                </tr>
+                <tr>
+                  <td>數量</td>
+                  <td><%= item.amount %></td>
+                </tr>
+              </tbody>
+            </table>
             <div class="item_description">商品描述<br><%= item.description %></div>
           </div>
           
           <div class="col-sm-4">
-              <div class="item_holder">交換資訊</div>
+              <h5>我要交換</h5>
               <input type="text" class="form-control input-md hidden"  id="supply_id" name= "supply_id" value="<%= item.supply_id %>">
               <input type="text" class="form-control input-md hidden"  id="item_name" name= "item_name" value="<%= item.item_name %>">
               <input type="text" class="form-control input-md hidden"  id="supplier_name" name= "supplier_name" value="<%= item.supplier_name %>">
               <input type="text" class="form-control input-md hidden"  id="supplier_name" name= "supplier_id" value="<%= item.supplier_id %>">
               <input type="text" class="form-control input-md hidden"  id="credit" name= "credit" value="<%= item.credit %>">
-                <% if(!user){ %>
-                <input type="text" class="form-control input-md" placeholder="阿呆" id="name" name="name"><br>
-                <%} else{ %>
-                <input type="text" class="form-control input-md hidden" id="name" name="name" value="<%= user.id%>"><br>
+              <% if(!user){ %>
+                <p>請先登入</p>
+              <%} else{ %>
+                <input type="text" class="form-control input-md hidden" id="name" name="name" value="<%= user.id%>">
                 <% } %>
-                <label>數量  </label>
-                <input type="text" class="form-control input-md"  id="amount" name= "amount">
+              <table class="table">
+              <tbody>
+                <tr>
+                  <td>想要的數量</td>
+                  <td><input type="text" class="form-control input-xs"  id="amount" name= "amount"></td>
+                </tr>
+                <tr>
+                  <td class="red">取貨方式</td>
+                  <td></td>
+                </tr>
                 <% if(!item.face){ %>
-                <p>&nbsp&nbsp&nbsp&nbsp面交：賣家不提供面交服務</p>
+                <tr>
+                  <td>面交</td>
+                  <td class="red">賣家不提供面交服務</td>
+                </tr>
                 <%} else{ %>
-                <input type="radio" name="method" value="face">  面交地點：<%= item.face %> 
-                <% } %><br>            
+                <tr>
+                  <td><input type="radio" name="method" value="face"> 面交</td>
+                  <td>地點：<%= item.face %></td>
+                </tr>
+                <% } %>
+
                 <% if(!item.delivery){ %>
-                <p>&nbsp&nbsp&nbsp&nbsp郵寄：賣家不提供郵寄服務</p>
+                <tr>
+                  <td>郵寄</td>
+                  <td class="red">賣家不提供郵寄服務</td>
+                </tr>
                 <%} else{ %>
-                <input type="radio" name="method" value="delivery">  買家自負郵資：<%= item.delivery %> <br>
-                <% } %><br>
-                <input type="checkbox" name="res_check" value="checked">我了解Love Spreading不涉及任何金錢交易責任 <br><br>
-                <button class="btn buy_btn"  type="submit" onclick="return(confirm("are you sure?"))">我要交換</button>
+                <tr>
+                  <td><input type="radio" name="method" value="face"> 郵寄</td>
+                  <td>自負郵資：<%= item.delivery %></td>
+                </tr>
+                <% } %>
+
+                <tr>
+                  <td COLSPAN=2><input type="checkbox" name="res_check" value="checked"> 本網站不涉及任何金錢交易責任</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="pull-right"><button class="btn buy_btn"  type="submit">我要交換</button></td>
+                </tr>
+              </tbody>
+              </table>
           </div>
         </form>
 
@@ -99,9 +146,9 @@
           </div>
           
           <div class="col-sm-5">
-          <div class="item_holder">need_id：<%= item.need_id %></div>
-          <div class="item_holder">_id：<%= item._id %></div>
-          <div class="item_holder">商品名稱：<%= item.item_name %></div>
+          <div class="item_holder hidden">need_id：<%= item.need_id %></div>
+          <div class="item_holder hidden">_id：<%= item._id %></div>
+          <div class="item_holder"><%= item.item_name %></div>
           <div class="item_holder">上架人：<%= item.needer_name %></div>
           <div class="credit">需求數量：<%= item.amount %></div>
           <div class="item_description">商品描述<br><%= item.description %></div>
