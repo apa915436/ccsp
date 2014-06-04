@@ -51,14 +51,14 @@
 
         </div>
       <div class="col-sm-9 col-md-10 main content">
-        <h1>User Profile</h1>
+        <h2>User Profile</h2>
       <div class="container-fluid">
         <div class="col-sm-5">
         <table class="table table-striped">
         <tbody>
           <tr>
             <th>個人資料</th>
-            <th></th>
+            <th> <span class="glyphicon glyphicon-wrench red pull-right"></span></th>
           </tr>
           <tr>
             <td>您的帳號</td>
@@ -82,14 +82,14 @@
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-danger pull-right">修改個人資料</button>
+      
       </div>
 
       <div class="col-sm-7">
         <table class="table table-striped">
         <tbody>
           <tr>
-            <th class="table_width">公益貢獻程度</th>
+            <th class="table_width">公益貢獻度</th>
             <th></th>
             <th></th>
           </tr>
@@ -97,7 +97,7 @@
             <td>您的總貢獻等級</td>
             <th class="table_width_sm">6</th>
             <td class="table_height">
-              <div class="progress">
+              <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
               </div>
             </td>
@@ -106,7 +106,7 @@
             <td>聚寶盆貢獻度</td>
             <th class="table_width_sm">8</th>
             <td class="table_height">
-              <div class="progress">
+              <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-success" style="width: 80%;"></div>
               </div>
             </td>
@@ -115,19 +115,46 @@
             <td>物資貢獻度</td>
             <th class="table_width_sm">4</th>
             <td class="table_height">
-              <div class="progress">
+              <div class="progress progress-striped">
                 <div class="progress-bar progress-bar-success" style="width: 40%;"></div>
               </div>              
             </td>
           </tr>
           <tr>
             <td>貢獻度總排名</td>
-            <th class="table_width_sm">3</th>
+            <th>3</th>
             <th></th>
           </tr>
         </tbody>
       </table>
       </div>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>商品管理</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th class="table_width_lg">商品名</th>
+            <th>數量</th>
+            <th>單價</th>
+            <th class="table_width_md">修改</th>
+            <th class="table_width_md">刪除</th>
+          </tr>
+          <% items.forEach(function(item){ %>
+            <tr>
+              <td><%= item.item_name %></td>
+              <td><%= item.amount %></td>
+              <td><%= item.credit %></td>
+              <td><span class="glyphicon glyphicon-pencil"></td>
+              <td><span class="glyphicon glyphicon-trash"></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
 
 <!-- Prompt login dialog Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

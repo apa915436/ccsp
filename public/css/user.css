@@ -284,10 +284,19 @@ fieldset[disabled] .navbar-top .navbar-btn.active {
 .table_width{
   width: 150px;
 }
+.table_width_lg{
+  width: 300px;
+}
 .table_width_sm{
   width: 10px;
+}
+.table_width_md{
+  width: 100px;
 }
 .table_height{
   vertical-align: center;
   height: 37px;
+}
+.red{
+  color: #c71585;
 }

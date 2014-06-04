@@ -3,7 +3,7 @@ require('../models/setting');
 var Setting = mongoose.model('Setting');
 
 var User = require('../models/user.js');
-
+var Supply   = mongoose.model('Supply');
 // console.log(User);
 
 exports.index = function(req, res) {
@@ -81,17 +81,27 @@ exports.profile = function(req, res) {
 	console.log(req.session);
 	console.log('in profile id is :', req.params.id);
 	// req.session.ct = req.session.ct ? req.session.ct + 1 : 1;
+
 	User.find({
 		id: req.params.id
 	}, function(err, file) {
-		console.log(file);
-		if (file.length) {
-			res.render('profile', {
-				file: file[0],
-				user: req.session.user
-			});
-		}
-	})
+
+		Supply.find({
+			supplier_id: req.params.id
+		}, function(err, items) {
+			if(items.length) {
+				console.log('items', items);
+				console.log('file',file);
+				if (file.length) {
+					res.render('profile', {
+						file: file[0],
+						items: items,
+						user: req.session.user
+					});
+				}
+			}
+		})
+	});
 };
 
 
