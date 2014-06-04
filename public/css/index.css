@@ -24,7 +24,6 @@ html, body {
   margin-left: auto; 
   margin-right: auto;*/
 }
-
 .title{
 
 /*  display: block;*/
@@ -88,7 +87,7 @@ html, body {
 .about_us{
   display: block;
 /*  border : 1px solid red;*/
-  background: #f4f4f4;
+  background: #b4e3ff;;
   width: 100%; height: 700px; 
   margin-left: auto; 
   margin-right: auto;
