@@ -151,7 +151,7 @@ exports.uploadsupply = function(req, res){
   	}).save( function ( err, need, count ){
     	if( err ) return next( err );
     	console.log('upload supply successfully');
-    	var redirect = '<html><meta http-equiv="refresh" content="3;url=/home" />'
+    	var redirect = '<html><meta http-equiv="refresh" content="1;url=/home" />'
 		var flash = '<h1>成功上傳!</h1></html>';
 		res.end(redirect+flash);
   	});
