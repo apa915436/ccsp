@@ -17,20 +17,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://love-spreading.herokuapp.com/home">Love Spreading</a>
+          <a href="../home"><img src="../../img/text3.png" height="50px"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://127.0.0.1:3000/home">物品瀏覽</a></li>
-            <li><a href="http://127.0.0.1:3000/upload">物品捐贈</a></li>
+            <li><a href="../home">物品瀏覽</a></li>
+            <li><a href="../upload">物品捐贈</a></li>
             <% if(!user){ %>
             <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
             <% } else { %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="http://127.0.0.1:3000/profile/<%= user.id%>">Profile</a></li>
-                <li><a href="http://127.0.0.1:3000/user/logout">Logout</a></li>
+                <li><a href="../profile/<%= user.id%>">Profile</a></li>
+                <li><a href="../user/logout">Logout</a></li>
               </ul>
             </li>
             <% } %>
@@ -47,10 +47,7 @@
     <div class="container-fluid">
       <!--Content and sidebar-->
       <div class="row row-offcanvas row-offcanvas-left">
-        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
-
-        </div>
-      <div class="col-sm-9 col-md-10 main content">
+      <div class="col-sm-12 col-md-12 main content">
         <h2>User Profile</h2>
       <div class="container-fluid">
         <div class="col-sm-5">
