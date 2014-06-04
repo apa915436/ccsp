@@ -281,3 +281,12 @@ fieldset[disabled] .navbar-top .navbar-btn.active {
 .black{
 	color: black;
 }
+.table_width{
+  width: 150px;
+}
+.table_width_sm{
+  width: 10px;
+}
+.table_height{
+  height: 37px;
+}

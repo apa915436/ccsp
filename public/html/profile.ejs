@@ -51,15 +51,79 @@
         </div>
       <div class="col-sm-9 col-md-10 main content">
         <h1>User Profile</h1>
-        <div>您的ID : <%= file.id %></div>
-        <div>您的暱稱 : <%= file.name %></div>
-        <div>您的連絡電話 : <%= file.tel %></div>
-        <div>您的連絡Email : <%= file.email %></div>
-        <div>您所擁有的Credit : <%= file.credit %></div>
-        <div></div>
-
+      <div class="container-fluid">
+        <div class="col-sm-5">
+        <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>個人資料</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>您的帳號</td>
+            <td><%= file.id %></td>
+          </tr>
+          <tr>
+            <td>您的暱稱</td>
+            <td><%= file.name %></td>
+          </tr>
+          <tr>
+            <td>您的連絡電話</td>
+            <td><%= file.tel %></td>
+          </tr>
+          <tr>
+            <td>您的連絡Email</td>
+            <td><%= file.email %></td>
+          </tr>
+          <tr>
+            <td>您所擁有的Credit</td>
+            <td><%= file.credit %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button class="btn btn-danger pull-right">修改資料</button> </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
-    </div>
+
+      <div class="col-sm-7">
+        <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th class="table_width">公益貢獻程度</th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>您的總貢獻等級</td>
+            <th class="table_width_sm">4</th>
+            <td class="table_height">
+              <div class="progress">
+                <div class="progress-bar" style="width: 30%;"></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>聚寶盆貢獻度</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 30%;"></div>
+            <th>4</th>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>物資貢獻度</td>
+            <td>
+              <div class="progress">
+                <div class="progress-bar" style="width: 30%;"></div>
+              </div>              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
 
 <!-- Prompt login dialog Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
