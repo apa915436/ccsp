@@ -131,7 +131,7 @@ exports.uploadsupply = function(req, res){
 	if (req.body.Checkbox2 == "delivery") {
 		delivery = req.body.delivery_cost;
 	}
-	var image = req.body.imgurl + "/convert?width=140&height=140&fit=crop"
+	var image = req.body.imgurl + "/convert?width=400&height=400&fit=crop"
 	console.log(req.body.catogory);
 	new Supply({
 		supply_id       : supply_index++,

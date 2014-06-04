@@ -46,7 +46,7 @@ margin-top: 10%;
  */
 body {
   padding-top: 50px;
-  background-color: #f5f5f5;
+  background-color: #fcfae8;
 }
 footer {
   padding-left: 15px;
@@ -86,7 +86,7 @@ footer {
 
 /* Sidebar navigation */
 .nav-sidebar {
-  background-color: #f5f5f5;
+  background-color: #fcfae8;
   margin-right: -15px;
   margin-bottom: 20px;
   margin-left: -15px;
@@ -95,11 +95,11 @@ footer {
 .nav-sidebar > li > a {
   padding-right: 20px;
   padding-left: 20px;
-  color : blue;
+  color : #dc502b;
 }
 .nav-sidebar > .active > a {
   color: #fff;
-  background-color: #428bca;
+  background-color: #dc502b;
 }
 
 /*
@@ -108,7 +108,7 @@ footer {
 
 .main {
   padding: 20px;
-  background-color: #fff;
+  background-color: #fcfae8;
 }
 @media (min-width: 768px) {
   .main {
