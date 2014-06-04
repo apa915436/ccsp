@@ -113,6 +113,7 @@ exports.donate = function(req, res) {
 		},
 		function(err, users) {
 			users.credit -= req.body.donate;
+			users.donate+= req.body.donate;
 			req.session.user.credit = users.credit;
 			users.save();
 

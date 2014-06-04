@@ -9,6 +9,7 @@ var Userschema = new Schema({
 	tel: { type: String, required: true },
 	charity: { type:Number, default: 0},
 	credit: { type: Number, default: 100 },
+	donate: { type: Number, default: 0 },
 	updated_at: { type: Date, default: new Date() },
 	create_at: { type: Date, default: new Date() }
 });

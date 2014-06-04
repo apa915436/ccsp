@@ -95,35 +95,39 @@
           </tr>
           <tr>
             <td>您的總貢獻等級</td>
-            <th class="table_width_sm">6</th>
+            <th class="table_width_sm">5</th>
             <td class="table_height">
               <div class="progress progress-striped">
-                <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
+                <div class="progress-bar progress-bar-warning" style="width: 50%;"></div>
               </div>
             </td>
           </tr>
           <tr>
             <td>聚寶盆貢獻度</td>
-            <th class="table_width_sm">8</th>
+            <% if(!file.donate){ %>
+              <th class="table_width_sm">0</th>
+              <td class="table_height">
+              <div class="progress progress-striped">
+                <div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+              </div>
+            </td>
+            <% }else{ %>
+            <th class="table_width_sm"><%= file.donate %></th>
             <td class="table_height">
               <div class="progress progress-striped">
-                <div class="progress-bar progress-bar-success" style="width: 80%;"></div>
+                <div class="progress-bar progress-bar-success" style="width: <%= file.donate/10 %>0%;"></div>
               </div>
             </td>
           </tr>
+          <% } %>
           <tr>
             <td>物資貢獻度</td>
-            <th class="table_width_sm">4</th>
+            <th class="table_width_sm"><%= items.length %></th>
             <td class="table_height">
               <div class="progress progress-striped">
-                <div class="progress-bar progress-bar-success" style="width: 40%;"></div>
+                <div class="progress-bar progress-bar-success" style="width: <%= items.length*10 %>%;"></div>
               </div>              
             </td>
-          </tr>
-          <tr>
-            <td>貢獻度總排名</td>
-            <th>3</th>
-            <th></th>
           </tr>
         </tbody>
       </table>
