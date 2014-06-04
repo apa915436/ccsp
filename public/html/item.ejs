@@ -22,16 +22,16 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="home">物品瀏覽</a></li>
-            <li><a href="upload">物品捐贈</a></li>
+            <li><a href="../home">物品瀏覽</a></li>
+            <li><a href="../upload">物品捐贈</a></li>
             <% if(!user){ %>
             <li data-toggle="modal" data-target="#myModal"><a href="#">Login</a></li>
             <% } else { %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= user.name%> <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="/profile/<%= user.id%>">Profile</a></li>
-                <li><a href="/user/logout">Logout</a></li>
+                <li><a href="../profile/<%= user.id%>">Profile</a></li>
+                <li><a href="../user/logout">Logout</a></li>
               </ul>
             </li>
             <% } %>
@@ -142,23 +142,45 @@
 
         <%} else{ %>
           <div class="col-sm-4">
-            <img class="item_img_size" src="../../img/closet.jpg">
+            <img class="item_img_size block" src="<%= item.image %>">
           </div>
           
           <div class="col-sm-5">
-          <div class="item_holder hidden">need_id：<%= item.need_id %></div>
-          <div class="item_holder hidden">_id：<%= item._id %></div>
-          <div class="item_holder"><%= item.item_name %></div>
-          <div class="item_holder">上架人：<%= item.needer_name %></div>
-          <div class="credit">需求數量：<%= item.amount %></div>
-          <div class="item_description">商品描述<br><%= item.description %></div>
-          <p>如有意捐贈，請透過以下方式聯繫公益團體</p>
-          <% if(item.tel){ %>
-            <div class="tel">連絡電話: <%= item.tel %></div>
-            <%} else{} %>
-          <% if(item.email){ %>
-            <div class="email">電子郵件: <%= item.email %></div>
-            <%} else{} %>
+            <br><br>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>需求物品名</td>
+                  <td><%= item.item_name %></td>
+                </tr>
+                <tr>
+                  <td >需求人</td>
+                  <td><%= item.needer_name %></td>
+                </tr>
+                <tr>
+                  <td>需求數量</td>
+                  <td class><%= item.amount %></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="item_description">商品描述<br><%= item.description %></div>
+            <p>如有意捐贈，請透過以下方式聯繫公益團體</p>
+            <table class="table">
+              <tbody>
+                <% if(item.tel){ %>
+                <tr>
+                  <td>連絡電話</td>
+                  <td ><%= item.tel %></td>
+                </tr>
+                <%} else{} %>
+                <% if(item.email){ %>
+                <tr>
+                  <td>Email</td>
+                  <td><%= item.email %></td>
+                </tr>
+                <%} else{} %>
+              </tbody>
+            </table>
         <% } %>
       <% }); %>
       </div>
