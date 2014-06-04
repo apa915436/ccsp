@@ -128,14 +128,8 @@ exports.uploadsupply = function(req, res){
 	if (req.body.Checkbox1 == "face") {
 		face = req.body.face_location;
 	}
-	else{
-		face = false;
-	}
 	if (req.body.Checkbox2 == "delivery") {
 		delivery = req.body.delivery_cost;
-	}
-	else{
-		delivery = false;
 	}
 	var image = req.body.imgurl + "/convert?width=140&height=140&fit=crop"
 	console.log(req.body.catogory);
