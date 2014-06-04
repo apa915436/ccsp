@@ -6,6 +6,7 @@
     <!-- Bootstrap -->
     <link href="../../css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="../../css/selfdefine.css" rel="stylesheet" media="screen">
+    <link href="../../css/flat-ui.css" rel="stylesheet" media="screen">
     <link href="../../css/user.css" rel="stylesheet" media="screen">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -79,12 +80,9 @@
             <td>您所擁有的Credit</td>
             <td><%= file.credit %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td><button class="btn btn-danger pull-right">修改資料</button> </td>
-          </tr>
         </tbody>
       </table>
+      <button class="btn btn-danger pull-right">修改個人資料</button>
       </div>
 
       <div class="col-sm-7">
@@ -97,29 +95,35 @@
           </tr>
           <tr>
             <td>您的總貢獻等級</td>
-            <th class="table_width_sm">4</th>
+            <th class="table_width_sm">6</th>
             <td class="table_height">
               <div class="progress">
-                <div class="progress-bar" style="width: 30%;"></div>
+                <div class="progress-bar progress-bar-warning" style="width: 60%;"></div>
               </div>
             </td>
           </tr>
           <tr>
             <td>聚寶盆貢獻度</td>
-            <td>
+            <th class="table_width_sm">8</th>
+            <td class="table_height">
               <div class="progress">
-                <div class="progress-bar" style="width: 30%;"></div>
-            <th>4</th>
+                <div class="progress-bar progress-bar-success" style="width: 80%;"></div>
               </div>
             </td>
           </tr>
           <tr>
             <td>物資貢獻度</td>
-            <td>
+            <th class="table_width_sm">4</th>
+            <td class="table_height">
               <div class="progress">
-                <div class="progress-bar" style="width: 30%;"></div>
+                <div class="progress-bar progress-bar-success" style="width: 40%;"></div>
               </div>              
             </td>
+          </tr>
+          <tr>
+            <td>貢獻度總排名</td>
+            <th class="table_width_sm">3</th>
+            <th></th>
           </tr>
         </tbody>
       </table>

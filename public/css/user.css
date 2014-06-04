@@ -288,5 +288,6 @@ fieldset[disabled] .navbar-top .navbar-btn.active {
   width: 10px;
 }
 .table_height{
+  vertical-align: center;
   height: 37px;
 }
