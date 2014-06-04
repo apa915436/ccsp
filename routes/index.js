@@ -149,6 +149,7 @@ exports.uploadsupply = function(req, res){
 	    catogory   		: req.body.catogory,
 	    amount	   		: req.body.amount,
 	    credit	   		: req.body.credit,
+	    description		: req.body.description,
 	    face       		: face,
 	    delivery   		: delivery,
 	    image			: image,
