@@ -4,7 +4,7 @@ var Supply   = mongoose.model('Supply');
 var Need   = mongoose.model('Need');
 var Trans = mongoose.model('Trans');
 var User = mongoose.model('User');
-var trans_index =100;
+var trans_index =150;
 
 // var supplier_mail = "";
 var gmailer = require("../lib/gmailer.js");
@@ -133,7 +133,7 @@ exports.deal = function(req, res){
 
 			var mailOptions = {
 				from: "lovespreading2014@gmail.com", // sender address
-				to: supplier_mail, // list of receivers
+				to: users[0].email, // list of receivers
 				subject: "Transaction Success on Love Spreading!", // Subject line
 				html: "Congratulation!!<br>"+
 				"Your items on Love Spreading has been bought by someone else!<br><br>"+
