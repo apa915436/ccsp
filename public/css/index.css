@@ -83,7 +83,9 @@ html, body {
 
 
 /*////////////////////////////////////////////////////////////*/
-
+.flow{
+  background-color: white;
+}
 .about_us{
   display: block;
 /*  border : 1px solid red;*/

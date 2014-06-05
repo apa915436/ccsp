@@ -157,6 +157,31 @@ exports.uploadsupply = function(req, res){
   	});
 }
 
+exports.uploadneed = function(req, res){
+	console.log(req.body);
+	console.log("user session check: " + req.session.user);
+	var image = req.body.imgurl + "/convert?width=400&height=400&fit=crop"
+	console.log(req.body.catogory);
+	new NeedSchema({
+		need_id    : need_index++,
+	    needer_name: req.body.name,
+	    item_name  : req.body.item_name,
+	    tel		   : req.body.tel,
+	    email      : req.body.email,
+	    amount	   : req.body.amount,
+	    catogory   : req.body.catogory,
+	    image	   : image,
+	    description: req.body.description,
+      	updated_at : Date.now()
+  	}).save( function ( err, need, count ){
+    	if( err ) return next( err );
+    	console.log('upload supply successfully');
+    	var redirect = '<html><meta http-equiv="refresh" content="1;url=/home" />'
+		var flash = '<h1>成功上傳!</h1></html>';
+		res.end(redirect+flash);
+  	});
+}
+
 exports.login = function(req, res) {
 	console.log("login function");
 	var account = req.account;

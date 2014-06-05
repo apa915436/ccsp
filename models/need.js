@@ -9,6 +9,7 @@ var NeedSchema = new Schema({
     email      : String,
     amount	   : Number,
     catogory   : String,
+    image	   : String,
     description: String,
     updated_at : Date
 });

@@ -15,7 +15,7 @@
                       <h1 class="text-center">物資上傳區</h1>
                   </div>
                   <div><!-- body -->
-                      <form class="form col-md-12 center-block" enctype="multipart/form-data" role="form" id="uploadform" name="uploadform" method="POST" action="/uploadsupply">
+                      <form class="form col-md-12 center-block" enctype="multipart/form-data" role="form" id="uploadform" name="uploadform" method="POST" action="/uploadneed">
                         <div class="form-group">
                           <label class="glyphicon glyphicon-star">您的稱呼</label>
                           <% if(!user){ %>
@@ -66,6 +66,24 @@
                             <label>數量</label>
                             <input type="text" class="form-control input-md" placeholder="3" id="amount" name="amount">
                           </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label>送貨方式</label>
+                          <div class="row-fluid">
+                            <div class="col-md-6">
+                            <label>
+                              <input type="checkbox" id="Checkbox1" value="face" name="Checkbox1"> &nbsp;&nbsp;面交
+                              <input type="text" class="col-md-3 form-control input-md" placeholder="請填寫願意面交的地點" name="face_location">
+                            </label>
+                            </div>
+                            <div class="col-md-6">
+                              <label class>
+                                <input type="checkbox" id="Checkbox2" value="delivery" name="Checkbox2"> &nbsp;&nbsp;郵寄
+                                <input type="text" class="col-md-3 form-control input-md" placeholder="請填寫對方需負擔的郵資" name="delivery_cost">
+                              </label>        
+                              </div>
+                            </div>
+                          
                         </div>
                         <div class="form-group col-md-12 pull-left">
                           <label>照片上傳</label>

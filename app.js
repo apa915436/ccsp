@@ -55,6 +55,7 @@ app.get('/need/:id',routes.need);
 app.post('/create',routes.create);
 app.get('/upload', routes.upload);
 app.post('/uploadsupply', routes.uploadsupply);
+app.post('/uploadneed', routes.uploadneed);
 app.post('/login', routes.login);
 app.get('/item/:charity/:id',item.item);
 app.post('/deal',item.deal);
