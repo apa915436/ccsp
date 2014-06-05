@@ -70,13 +70,13 @@ exports.deal = function(req, res){
     var buyer , seller;
     console.log('seller',detail.supplier_id);
 	User.
-	 	find({id: detail.buyer_id}).
+	 	findOne({id: detail.buyer_id}).
 	 	exec( function (err, user1){
 		    	if(err){
 		      		console.error(err);
 		    	};
 		    	// console.log(user1);
-		    	buyer = user1[0];
+		    	buyer = user1;
 			    var buyer_credit_before = buyer.credit;
 			    console.log('buyer credit before', buyer.credit);
 			    var buyer_credit_after = buyer.credit - detail.credit;
@@ -87,19 +87,21 @@ exports.deal = function(req, res){
 		    });
 
 	User.
-	 	find({id: detail.supplier_id}).
+	 	findOne({id: detail.supplier_id}).
 	 	exec( function (err, user2){
 		    	if(err){
 		      		console.error(err);
 		    	};
 		    	// console.log(user2);
-		    	seller = user2[0];
+		    	seller = user2;
 			    var seller_credit_before = seller.credit;
 			    console.log('seller credit before', seller.credit);
 			    var seller_credit_after = seller.credit + detail.credit;
 			    console.log('seller credit after', seller_credit_after);
    			    seller.credit = seller_credit_after;
 			    seller.save({});
+
+		    	console.log('seller aaaaaaa', seller);
 		    }); 
 	
 	new Trans(detail)
@@ -107,6 +109,7 @@ exports.deal = function(req, res){
     	if( err ) return next( err );
     	console.log('transaction successfully');
     	console.log('item trans_id',detail.trans_id);
+    	console.log('seller bbbbb', seller);
     	// console.log(detail);
     	res.render('deal_done', {
 					title: 'Love Spreading',
