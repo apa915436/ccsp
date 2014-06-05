@@ -82,6 +82,7 @@ exports.deal = function(req, res){
 			    var buyer_credit_after = buyer.credit - detail.credit;
 			    console.log('buyer credit after', buyer_credit_after);
 			    buyer.credit = buyer_credit_after;
+			    req.session.user.credit = buyer.credit;
 			    buyer.save( {});
 		    });
 
