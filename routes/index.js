@@ -3,8 +3,8 @@ var promise = require( 'promise');
 var Supply   = mongoose.model('Supply');
 var Need   = mongoose.model('Need');
 var Setting   = mongoose.model('Setting');
-var need_index = 0;
-var supply_index = 0;
+var need_index = 50;
+var supply_index = 50;
 
 
 
